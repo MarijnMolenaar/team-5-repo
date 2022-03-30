@@ -106,16 +106,24 @@ app.get('/home', (req, res) => {
 // De route voor de discover pagina
 app.get('/discover', async (req, res) => {
     // De potentiële matches worden uit de database gehaald zodat deze kunnen worden laten zien aan de gebruiker
-    const matches = await db.collection('matches').find().toArray();
+    const matches = await db.collection('matches').find({"liked": ""}).toArray();
 
     const title = "Discover";
     res.render('discover', {title, matches});
 })
 
 // De route voor de filterpagina
-app.get('/filter', (req, res) => {
+app.get('/filter', async (req, res) => {
     const title = "Filtering";
     res.render('filter', {title});
+})
+
+app.post('filter', async (req, res) => {
+    const query = {"country": req.body.country_filter, "type_a": req.body.type_a_filter, "liked": ""};
+    const filter = await db.collection('matches').find(query).toArray();
+
+    const title = "Discover";
+    res.render('discover', {title, matches: filter});
 })
 
 // De route voor de likespagina
