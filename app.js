@@ -118,7 +118,7 @@ app.get('/filter', async (req, res) => {
     res.render('filter', {title});
 })
 
-app.post('filter', async (req, res) => {
+app.post('/filter', async (req, res) => {
     const query = {"country": req.body.country_filter, "type_a": req.body.type_a_filter, "liked": ""};
     const filter = await db.collection('matches').find(query).toArray();
 
