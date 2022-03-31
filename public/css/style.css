@@ -257,8 +257,6 @@ button {
     margin-bottom: 6em;
 }
 
-
-
 /* Matches Page Styling */
 #match {
     background-color: white;
@@ -267,7 +265,19 @@ button {
     margin-bottom: 1em;
 }
 
-
+#matchid {
+    display: none;
+    }
+    
+    #match input[type=submit] {
+    background-color: rgb(115, 163, 42);
+    margin: 1em auto;
+    }
+    
+    #match #humanprofile,
+    #match #animalprofile {
+    padding-bottom: 0;
+    }
 
 /* Likes Page Styling */
 #likes {

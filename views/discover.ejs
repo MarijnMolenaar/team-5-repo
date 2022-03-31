@@ -43,6 +43,10 @@
                 <p><%= matches.breed_a %></p>  
                 <p><%= matches.bio_a %></p>        
             </div>
+            <form action="/discover" method="post">
+                <input type="text" id="matchid" name="matchid" value="<%= matches._id %>">
+                <input type="submit" value="Like Profiel">
+            </form>
         </section>
         <% }) %>
     </main>
