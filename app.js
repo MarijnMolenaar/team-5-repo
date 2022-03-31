@@ -112,20 +112,6 @@ app.get('/discover', async (req, res) => {
     res.render('discover', {title, matches});
 })
 
-// De route voor het liken van een profiel
-app.post('/discover', async (req, res) => {
-    const query1 = {_id: ObjectId(req.body.matchid)};
-    await db.collection('matches').updateOne(query1, {$set: {liked: "yes"}});
-    
-    const query2 = {
-    "liked": "yes"
-    };
-    const likes = await db.collection('matches').find(query2).toArray();
-    
-    const title = "Likes";
-    res.render('likes', {title, likes});
-    })
-
 // De route voor de filterpagina
 app.get('/filter', async (req, res) => {
     const title = "Filtering";
@@ -238,3 +224,9 @@ app.listen(port, () => {
 
     connectDB().then(() => console.log('We have a connection to Mongo!'));
 })
+
+
+
+// Ik wilde ook graag een foto upload-functie erin verwerken, maar ben hier uiteindelijk helaas niet uitgekomen... Het was me toch iets te moeilijk, ik heb nu dus gewoon een dummyfoto gebruikt bij de profielfoto,
+// en bij het fotoupload knopje heb ik het wel voor elkaar gekregen dat je deze geuploade foto kan zien. Deze wordt dan uiteraard niet op de server opgeslagen en is daardoor ook niet zichtbaar op het uiteindelijke profiel
+// Ik hoop dat desalniettemin mijn functie goed genoeg is!
