@@ -160,14 +160,16 @@ app.get('/edit', async (req, res) => {
 // Met deze post route wordt het bewerkte profiel verstuurd naar de database
 app.post('/edit', async (req, res) => {
     // Alle onderdelen van het formulier (met bewerkingen) worden opnieuw opgehaald door middel van de BodyParser van express en samengevoegd in een variabele
+    console.log(req.body);
+
     let profile = {
-        url: req.body.avatar,
+        url: req.body.avatar || req.body.original_image, //anders negeren 
         name: req.body.name,
         age: req.body.age,
         country: req.body.country,
         bio: req.body.bio,
         interests: arrayify(req.body.interests),
-        url_a: req.body.avatar_a,
+        url_a: req.body.avatar_a || req.body.original_image_a,
         name_a: req.body.name_a,
         age_a: req.body.age_a,
         type_a: req.body.type_a,

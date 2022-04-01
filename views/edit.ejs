@@ -19,7 +19,8 @@
         <form action="/edit" method="post">
             <div id="humanprofileedit">
                 <label for="avatar">Choose a profile picture</label>
-                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" value="<%= profiles.url %>">
+                <input type="hidden" name="original_image" value="<%= profiles.url %>" />
+                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" alt="" >
                 
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" value="<%= profiles.name %>">
@@ -37,19 +38,14 @@
                         <label for="<%= interest %>"><%= interest %></label><br>
                         <% }) %>
                     </fieldset>
-                </div>
-                <p>Upload Photo (Of you and your pet!)</p>
-                <input type="file" name="photo" id="photo" accept="image/png, image/jpeg, image/gif" onchange="loadFile(event)">
-                <img id="previewphoto" width="292.5">
-                <!-- Bron gebruikt: https://www.webtrickshome.com/forum/how-to-display-uploaded-image-in-html-using-javascript -->
+                </div> 
             </div> 
 
             <div id="animalprofileedit">
-                <label for="avatar_a">Choose a profile picture</label>
-                <input type="file" id="avatar_a" name="avatar_a" accept="image/png, image/jpeg" value="<%= profiles.url_a %>">
+                <label for="avatar">Choose a profile picture</label>
+                <input type="hidden" name="original_image_a" value="<%= profiles.url_a %>" />
+                <input type="file" id="avatar_a" name="avatar_a" accept="image/png, image/jpeg" alt="" >
                
-
-
                 <label for="name_a">Name</label>
                 <input type="text" id="name_a" name="name_a" value="<%= profiles.name_a %>">
                 <label for="age_a">Age</label>
