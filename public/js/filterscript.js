@@ -20,3 +20,5 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 });
 // Bron gebruikt: https://www.youtube.com/watch?v=iw4lvZGBuvA&ab_channel=OstonCodeCypher
+
+document.getElementById("discoverpage").classList.add("active");

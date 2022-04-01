@@ -15,3 +15,5 @@ function AnimalProfile() {
     divhuman.style.display = "none";
     divanimal.style.display = "block";
 }
+
+document.getElementById("discoverpage").classList.add("active");

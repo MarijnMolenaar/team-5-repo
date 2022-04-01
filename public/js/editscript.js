@@ -73,6 +73,7 @@ interests.forEach((i) => {
 
 // Bron gebruikt: https://www.w3schools.com/jsref/jsref_includes_array.asp
 
+document.getElementById("profilepage").classList.add("active");
 
 
 
