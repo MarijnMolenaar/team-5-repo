@@ -1,6 +1,6 @@
 // De 'REST Countries' API wordt ingeladen in het document
 document.addEventListener('DOMContentLoaded', () => {
-    const CountryDropdown = document.getElementById('country');
+    const CountryDropdown = document.getElementById('country_filter');
 
     fetch('https://restcountries.com/v2/all').then(res => {
         return res.json();

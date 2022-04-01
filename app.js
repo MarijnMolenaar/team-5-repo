@@ -6,6 +6,44 @@ const multer = require('multer');
 const {MongoClient} = require('mongodb');
 const {ObjectId} = require('mongodb');
 const nodemailer = require('nodemailer');
+const mongoose = require("mongoose");
+const matches = require('./model/matches');
+
+
+
+//////////////////////
+// Mongoose verbinden met MongoDb  //
+//////////////////////
+
+const dbURI = process.env.DB_URI
+
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+	.then((result) => console.log('connected to database'))
+	.catch((err) => console.log(err));
+
+// mongoose.connect("mongodb://localhost/matchingapp", () => {
+//         console.log("connected")
+//     },
+//     //for error 
+//     e => console.error(e)
+
+//)
+
+const tyler = new matches({
+    name:"Tyler",
+    age:21,
+    country:"Netherlands",
+    bio: "Hi i love my pet ",
+    name_a :"Fish",
+    age_a : 2,
+    type_a :"catfish" ,
+    breed_a :"catfish",
+    bio_a :"Fish is a sea animal",
+    liked : "yes"
+})
+
+tyler.save().then (() =>console.log("match saved to database"))
+
 
 //////////////////////
 // Define Variables //
@@ -213,6 +251,8 @@ async function connectDB() {
         throw error;
     }
 }
+
+
 
 //////////////////
 // Start Server //
