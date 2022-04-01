@@ -1,0 +1,54 @@
+[
+    {
+        "name": "Petra",
+        "age": "24",
+        "country": "Netherlands",
+        "bio": "Spontaneous and adventurous girl looking for a match!",
+        "interests": ["Travel", "Dogs", "Cooking", "Politics", "Fitness"],
+        "name_a": "Bello",
+        "age_a": "4",
+        "type_a": "Dog",
+        "breed_a": "Golden Retriever",
+        "bio_a": "Always up to play with new people!",
+        "liked": ""
+    },
+    {
+        "name": "Marije",
+        "age": "29",
+        "country": "Netherlands",
+        "bio": "Spontaneous and adventurous girl looking for a match!",
+        "interests": ["Travel", "Dogs", "Cooking", "Politics", "Fitness"],
+        "name_a": "Henk",
+        "age_a": "6",
+        "type_a": "Cat",
+        "breed_a": "Sphynx",
+        "bio_a": "Always up to play with new people!",
+        "liked": ""
+    },
+    {
+        "name": "Lisa",
+        "age": "22",
+        "country": "Netherlands",
+        "bio": "Spontaneous and adventurous girl looking for a match!",
+        "interests": ["Travel", "Dogs", "Cooking", "Politics", "Fitness"],
+        "name_a": "Blub",
+        "age_a": "2",
+        "type_a": "Fish",
+        "breed_a": "Goldfish",
+        "bio_a": "Always up to play with new people!",
+        "liked": ""
+    },
+    {
+        "name": "Anna",
+        "age": "25",
+        "country": "Netherlands",
+        "bio": "Spontaneous and adventurous girl looking for a match!",
+        "interests": ["Travel", "Dogs", "Cooking", "Politics", "Fitness"],
+        "name_a": "Bob",
+        "age_a": "8",
+        "type_a": "Dog",
+        "breed_a": "French Bulldog",
+        "bio_a": "Always up to play with new people!",
+        "liked": ""
+    }
+]

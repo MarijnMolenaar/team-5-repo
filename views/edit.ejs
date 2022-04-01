@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('includes/head'); -%>
+</head>
+
+<body>
+    <%- include('includes/header'); -%>
+
+    <%- include('includes/nav'); -%>
+
+    <main>
+        <h1>Edit Profile</h1>
+        <div id="profilenave">
+            <a id="hprofe" href="#" onclick="HumanProfileEdit();"><img src="images/icon_human.png" alt=""></a>
+            <a id="aprofe" href="#" onclick="AnimalProfileEdit();"><img src="images/icon_animal.png" alt=""></a>
+        </div>
+        <form action="/edit" method="post">
+            <div id="humanprofileedit">
+                <label for="avatar">Choose a profile picture</label>
+                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" value="<%= profiles.url %>">
+
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" value="<%= profiles.name %>">
+                <label for="age">Age</label>
+                <input type="text" id="age" name="age" value="<%= profiles.age %>">
+                <label for="country">Country</label>
+                <select name="country" id="country"></select>
+                <label for="bio">Profile Biography</label>
+                <textarea name="bio" id="bio" cols="30" rows="5"><%= profiles.bio %></textarea>
+                <div id="int-list">
+                    <fieldset id="interestfieldset">
+                        <legend>Interests:</legend>
+                        <% interests.forEach(function(interest){ %>
+                        <input type="checkbox" name="interests" value="<%= interest %>" id="<%= interest %>" checked>
+                        <label for="<%= interest %>"><%= interest %></label><br>
+                        <% }) %>
+                    </fieldset>
+                </div>
+                <p>Upload Photo (Of you and your pet!)</p>
+                <input type="file" name="photo" id="photo" accept="image/png, image/jpeg, image/gif" onchange="loadFile(event)">
+                <img id="previewphoto" width="292.5">
+                <!-- Bron gebruikt: https://www.webtrickshome.com/forum/how-to-display-uploaded-image-in-html-using-javascript -->
+            </div> 
+
+            <div id="animalprofileedit">
+                <label for="avatar">Choose a profile picture</label>
+                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" value="<%= profiles.url %>">
+
+
+                <label for="name_a">Name</label>
+                <input type="text" id="name_a" name="name_a" value="<%= profiles.name_a %>">
+                <label for="age_a">Age</label>
+                <input type="text" id="age_a" name="age_a" value="<%= profiles.age_a %>">
+                <label for="type_a">Animal Type</label>
+                <select name="type_a" id="type_a" value="<%= profiles.type_a %>">
+                    <option value="Dog">Dog</option>
+                    <option value="Cat">Cat</option>
+                    <option value="Guinea Pig">Guinea Pig</option>
+                    <option value="Fish">Fish</option>
+                    <option value="Bunny">Bunny</option>
+                    <option value="Bird">Bird</option>
+                    <option value="Hamster">Hamster</option>
+                    <option value="Hedgehog">Hedgehog</option>
+                </select>
+                <label for="breed_a">Breed</label>
+                <input type="text" id="breed_a" name="breed_a" value="<%= profiles.breed_a %>">
+                <label for="bio_a">Animal Biography</label>
+                <textarea name="bio_a" id="bio_a" cols="30" rows="5"><%= profiles.bio_a %></textarea>
+            </div>
+            <input type="submit" value="Opslaan">
+        </form>
+    </main>
+
+    <script src="js/editscript.js"></script>
+</body>
+
+</html>
