@@ -17,8 +17,11 @@
         <section id="likes">
             <img src="images/previewpic3.jpg" alt="">
             <p><%= likes.name %> & <%= likes.name_a %></p>
-            <a href="#"><img id="arrow" src="images/icon_arrowright.png" alt=""></a>
+            <a href="/<%= likes._id %>"><img id="arrow" src="images/icon_arrowright.png" alt=""></a>
         </section>
+        <form id="idcheck">
+            <input type="text" id="likeid" name="likeid" value="<%= likes._id %>">
+        </form>
         <% }) %>
     </main>
 

@@ -40,6 +40,16 @@ header img {
     right: 1.5em;
 }
 
+#back {
+    position: absolute;
+    top: 1em;
+    left: 1.5em;
+}
+
+#back img {
+    transform: rotate(180deg);
+}
+
 
 
 header,
@@ -327,6 +337,15 @@ button {
 #likes #arrow {
     height: 30px;
     width: 30px;
+}
+
+#idcheck {
+    display: none;
+}
+
+#likedprofile #match {
+    padding-bottom: 1em;
+    margin-top: 2em;
 }
 
 

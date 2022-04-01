@@ -162,6 +162,14 @@ app.get('/likes', async (req, res) => {
     res.render('likes', {title, likes});
 })
 
+app.get('/:_id', async (req, res) => {
+    const query = {_id: ObjectId(req.params._id)};
+    const matches = await db.collection('matches').findOne(query);
+
+    const title = "Liked Profile";
+    res.render('likedprofile', {title, matches});
+})
+
 // De route voor de profielpagina
 app.get('/profile', async (req, res) => {
     // Het eerder ingevulde profiel wordt nu uit de database gehaald zodat deze kan worden laten zien aan de gebruiker
