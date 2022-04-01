@@ -36,3 +36,5 @@ Array.from(children).forEach(li => {
 // Vervolgens wordt deze array met alle geselecteerde list items in de localStorage opgeslagen, zodat deze in een ander JavaScript bestand opgehaald kan worden
 localStorage.setItem('myArray', JSON.stringify(interestarray));
 // Bron gebruikt: https://gist.github.com/nrojas13/68b79e21d0c81aa22ad762c9a4db38d0
+
+document.getElementById("profilepage").classList.add("active");

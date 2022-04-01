@@ -106,7 +106,32 @@ app.get('/home', (req, res) => {
 // De route voor de discover pagina
 app.get('/discover', async (req, res) => {
     // De potentiële matches worden uit de database gehaald zodat deze kunnen worden laten zien aan de gebruiker
-    const matches = await db.collection('matches').find({"liked": ""}).toArray();
+    const matches = await db.collection('matches').findOne({"liked": ""});
+
+    const title = "Discover";
+    res.render('discover', {title, matches});
+})
+
+// De route voor het liken van een profiel
+app.post('/like', async (req, res) => {
+    const query1 = {_id: ObjectId(req.body.matchid)};
+    await db.collection('matches').updateOne(query1, {$set: {liked: "yes"}});
+
+    const query2 = {
+        "liked": "yes"
+    };
+    const likes = await db.collection('matches').find(query2).toArray();
+
+    const title = "Likes";
+    res.render('likes', {title, likes});
+})
+
+// De route voor het disliken van een profiel
+app.post('/dislike', async (req, res) => {
+    const query1 = {_id: ObjectId(req.body.matchid)};
+    await db.collection('matches').updateOne(query1, {$set: {liked: "no"}});
+
+    const matches = await db.collection('matches').findOne({"liked": ""});
 
     const title = "Discover";
     res.render('discover', {title, matches});
@@ -120,7 +145,7 @@ app.get('/filter', async (req, res) => {
 
 app.post('/filter', async (req, res) => {
     const query = {"country": req.body.country_filter, "type_a": req.body.type_a_filter, "liked": ""};
-    const filter = await db.collection('matches').find(query).toArray();
+    const filter = await db.collection('matches').findOne(query);
 
     const title = "Discover";
     res.render('discover', {title, matches: filter});

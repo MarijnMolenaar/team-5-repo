@@ -71,6 +71,12 @@ nav ul {
 nav ul img {
     max-height: 30px;
     max-width: 30px;
+    padding: 0;
+    opacity: 0.5;
+}
+
+.active {
+    opacity: 1;
 }
 
 
@@ -267,6 +273,24 @@ button {
     margin-bottom: 1em;
 }
 
+#matchid {
+    display: none;
+}
+
+#match #likeknop {
+    background-color: rgb(115, 163, 42);
+    margin: 1em auto;
+}
+
+#match #dislikeknop {
+    background-color: rgb(163, 42, 42);
+    margin: 1em auto;
+}
+
+#match #humanprofile,
+#match #animalprofile {
+    padding-bottom: 0;
+}
 
 
 /* Likes Page Styling */
@@ -293,11 +317,16 @@ button {
     align-self: center;
 }
 
-#likes #arrow {
+#likes a {
     height: 30px;
     width: 30px;
     align-self: center;
     margin-right: 1em;
+}
+
+#likes #arrow {
+    height: 30px;
+    width: 30px;
 }
 
 
