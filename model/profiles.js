@@ -16,6 +16,6 @@ const profilesSchema = new mongoose.Schema({
     liked : String
 
 })
-//exports de data in de myprofile collection in de database to the profiiesschema
-modules. exports = mongoose.model( "myprofile" , profilesSchema)
+//exports the data in the myprofile collection in de database to the profiiesschema
+module.exports = mongoose.model( "myprofile" , profilesSchema)
 

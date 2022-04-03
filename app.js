@@ -3,11 +3,16 @@ const app = express();
 const dotenv = require('dotenv').config();
 const arrayify = require('array-back');
 const multer = require('multer');
-const {MongoClient} = require('mongodb');
-const {ObjectId} = require('mongodb');
+const {
+    MongoClient
+} = require('mongodb');
+const {
+    ObjectId
+} = require('mongodb');
 const nodemailer = require('nodemailer');
 const mongoose = require("mongoose");
 const matches = require('./model/matches');
+
 
 
 
@@ -17,9 +22,12 @@ const matches = require('./model/matches');
 
 const dbURI = process.env.DB_URI
 
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-	.then((result) => console.log('connected to database'))
-	.catch((err) => console.log(err));
+mongoose.connect(dbURI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    .then((result) => console.log('connected to database'))
+    .catch((err) => console.log(err));
 
 // mongoose.connect("mongodb://localhost/matchingapp", () => {
 //         console.log("connected")
@@ -28,21 +36,6 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
 //     e => console.error(e)
 
 //)
-
-const tyler = new matches({
-    name:"Tyler",
-    age:21,
-    country:"Netherlands",
-    bio: "Hi i love my pet ",
-    name_a :"Fish",
-    age_a : 2,
-    type_a :"catfish" ,
-    breed_a :"catfish",
-    bio_a :"Fish is a sea animal",
-    liked : "yes"
-})
-
-tyler.save().then (() =>console.log("match saved to database"))
 
 
 //////////////////////
@@ -57,7 +50,9 @@ const interests = ["Travel", "Dogs", "Cooking", "Surfing", "Politics", "Cats", "
 //////////////////
 app.use(express.static('public'));
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({
+    extended: true
+}));
 
 ///////////////////////////
 // Set Templating Engine //
@@ -68,11 +63,11 @@ app.set('view engine', 'ejs');
 // Set Up Nodemailer //
 ///////////////////////
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.GMAIL_EMAIL,
-    pass: process.env.GMAIL_PASSW
-  }
+    service: 'gmail',
+    auth: {
+        user: process.env.GMAIL_EMAIL,
+        pass: process.env.GMAIL_PASSW
+    }
 });
 
 ////////////////////////
@@ -80,18 +75,25 @@ const transporter = nodemailer.createTransport({
 ////////////////////////
 
 // De eerste route is de pagina waar de gebruiker op komt wanneer hij/zij als eerste de app opent
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
     // De database wordt leeggemaakt, de gebruiker moet voor het eerst zijn/haar profiel aanmaken dus de database mag nog geen profiel bevatten
     db.collection('myprofile').deleteMany({});
 
+
+
     const title = "Match-A-Pet";
-    res.render('index', {title});
+    res.render('index', {
+        title
+    });
 })
 
 // De pagina voor het aanmaken van het profiel
 app.get('/makeprofile', (req, res) => {
     const title = "Make Profile";
-    res.render('makeprofile', {title, interests});
+    res.render('makeprofile', {
+        title,
+        interests
+    });
 })
 
 // Met deze post route wordt het formulier dat door de gebruiker is ingevuld verstuurd naar de database
@@ -110,6 +112,8 @@ app.post('/makeprofile', async (req, res) => {
         bio_a: req.body.bio_a
     };
 
+
+
     // Nu zorgen we ervoor dat er een bevestigingsmail van de registratie gestuurd wordt naar de nieuwe gebruiker
     const mailOptions = {
         from: 'match-a-pet@gmail.com',
@@ -118,50 +122,69 @@ app.post('/makeprofile', async (req, res) => {
         text: 'Uw registratie bij Match-A-Pet is voltooid, veel succes met het vinden van uw perfecte match!'
     };
 
-    transporter.sendMail(mailOptions, function(error, info){
+    transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
             console.log(error);
         } else {
             console.log('Email sent: ' + info.response);
         }
     });
-    
+
     // Vervolgens wordt door middel van het inserten van deze variabele het profiel opgeslagen in de database
     await db.collection('myprofile').insertOne(profile);
 
     const profiles = await db.collection('myprofile').findOne();
 
     const title = "Succesfully Made Profile Page!";
-    res.render('home', {title, profiles});
+    res.render('home', {
+        title,
+        profiles
+    });
 })
 
 // De route voor de homepagina
 app.get('/home', (req, res) => {
     const title = "Home";
-    res.render('home', {title});
+    res.render('home', {
+        title
+    });
 })
 
 // De route voor de discover pagina
 app.get('/discover', async (req, res) => {
     // De potentiële matches worden uit de database gehaald zodat deze kunnen worden laten zien aan de gebruiker
-    const matches = await db.collection('matches').find({"liked": ""}).toArray();
+    const matches = await db.collection('matches').find({
+        "liked": ""
+    }).toArray();
 
     const title = "Discover";
-    res.render('discover', {title, matches});
+    res.render('discover', {
+        title,
+        matches
+    });
 })
 
 // De route voor de filterpagina
 app.get('/filter', async (req, res) => {
     const title = "Filtering";
-    res.render('filter', {title});
+    res.render('filter', {
+        title
+    });
 })
 
 app.post('filter', async (req, res) => {
-    const query = {"country": req.body.country_filter, "type_a": req.body.type_a_filter, "liked": ""};
+    const query = {
+        "country": req.body.country_filter,
+        "type_a": req.body.type_a_filter,
+        "liked": ""
+    };
     const filter = await db.collection('matches').find(query).toArray();
 
     const title = "Discover";
-    res.render('discover', {title, matches: filter});
+    res.render('discover', {
+        title,
+        matches: filter
+    });
 })
 
 // De route voor de likespagina
@@ -172,7 +195,10 @@ app.get('/likes', async (req, res) => {
     const likes = await db.collection('matches').find(query).toArray();
 
     const title = "Likes";
-    res.render('likes', {title, likes});
+    res.render('likes', {
+        title,
+        likes
+    });
 })
 
 // De route voor de profielpagina
@@ -181,7 +207,10 @@ app.get('/profile', async (req, res) => {
     const profiles = await db.collection('myprofile').findOne();
 
     const title = "Profile Page";
-    res.render('profile', {title, profiles});
+    res.render('profile', {
+        title,
+        profiles
+    });
 })
 
 // De route voor de editpagina
@@ -190,7 +219,11 @@ app.get('/edit', async (req, res) => {
     const profiles = await db.collection('myprofile').findOne();
 
     const title = "Profile Editor";
-    res.render('edit', {title, profiles, interests});
+    res.render('edit', {
+        title,
+        profiles,
+        interests
+    });
 })
 
 // Met deze post route wordt het bewerkte profiel verstuurd naar de database
@@ -217,7 +250,10 @@ app.post('/edit', async (req, res) => {
     const profiles = await db.collection('myprofile').findOne();
 
     const title = "Succesfully Edited Profile Page!";
-    res.render('profile', {title, profiles});
+    res.render('profile', {
+        title,
+        profiles
+    });
 })
 
 
@@ -229,7 +265,9 @@ app.post('/edit', async (req, res) => {
 app.use((req, res, next) => {
     console.log("Error 404");
     const title = "Error 404";
-    res.status(404).render('404', {title});
+    res.status(404).render('404', {
+        title
+    });
 })
 
 /////////////////////////

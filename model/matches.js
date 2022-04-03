@@ -17,4 +17,4 @@ const matchesSchema = new mongoose.Schema({
     liked : String
 
 })
-module.exports = mongoose.model("matches",  matchesSchema)
+module.exports = mongoose.model("Match", matchesSchema)
