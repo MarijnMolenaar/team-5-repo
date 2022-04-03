@@ -162,7 +162,7 @@ app.get('/likes', async (req, res) => {
     res.render('likes', {title, likes});
 })
 
-app.get('/:_id', async (req, res) => {
+app.get('/likes/:_id', async (req, res) => {
     const query = {_id: ObjectId(req.params._id)};
     const matches = await db.collection('matches').findOne(query);
 

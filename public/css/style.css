@@ -17,13 +17,22 @@ body {
 main {
     width: 75%;
     margin: auto;
+    margin-top: 76px;
 }
 
 
 
 /* Header and Nav styling */
 
+header,
+nav {
+    position: sticky;
+}
+
 header {
+    position: fixed;
+    top: 0;
+    width: 100%;
     text-align: center;
     background-color: #253355;
     padding: 1em 0;
@@ -48,13 +57,6 @@ header img {
 
 #back img {
     transform: rotate(180deg);
-}
-
-
-
-header,
-nav {
-    position: sticky;
 }
 
 

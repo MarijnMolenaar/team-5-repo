@@ -7,8 +7,8 @@
 
 <body>
     <header>
-        <a id="back" href="/likes"><img src="images/icon_arrowrightwhite.png" alt=""></a> 
-        <a href="/home"><img src="images/logowhite.png" alt=""></a>   
+        <a id="back" href="/likes"><img src="/images/icon_arrowrightwhite.png" alt=""></a> 
+        <a href="/home"><img src="/images/logowhite.png" alt=""></a>   
     </header>
 
     <%- include('includes/nav'); -%>
@@ -16,11 +16,11 @@
     <main id="likedprofile">
         <section id="match">
             <div id="profilenav">
-                <a id="hprof" href="#" onclick="HumanProfile();"><img src="images/icon_human.png" alt=""></a>
-                <a id="aprof" href="#" onclick="AnimalProfile();"><img src="images/icon_animal.png" alt=""></a>
+                <a id="hprof" href="#" onclick="HumanProfile();"><img src="/images/icon_human.png" alt=""></a>
+                <a id="aprof" href="#" onclick="AnimalProfile();"><img src="/images/icon_animal.png" alt=""></a>
             </div>
             <div id="humanprofile">
-                <img id="previewpic" src="images/previewpic3.jpg" alt="">
+                <img id="previewpic" src="/images/previewpic3.jpg" alt="">
 
                 <h2 id="h2check"><%= matches.name %></h2>
                 <h3><%= matches.age %> years old</h3>
@@ -33,7 +33,7 @@
                 </ul>
             </div>
             <div id="animalprofile">
-                <img id="previewpic_a" src="images/previewpic3.jpg" alt="">
+                <img id="previewpic_a" src="/images/previewpic3.jpg" alt="">
 
                 <h2><%= matches.name_a %></h2>
                 <h3><%= matches.age_a %> years old</h3>
@@ -44,7 +44,7 @@
         </section>
     </main>
 
-    <script src="js/likedprofilescript.js"></script>
+    <script src="/js/likedprofilescript.js"></script>
 </body>
 
 </html>
