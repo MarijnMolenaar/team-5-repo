@@ -1,3 +1,7 @@
 DB_URI = mongodb+srv://<username>:<password>@<clustername>.mongodb.net/
 DB_NAME = <database_name>
+
+GMAIL_EMAIL = <je eigen gmail adres>
+GMAIL_PASSW = <je eigen gmail password>
+
 TESTVAR = hijdoethet
