@@ -19,18 +19,6 @@ exports.validateUserSignUp = [
 
 ]
 
-exports.userValidation = (req, res, next) => {
-    const result = validationResult(req).array();
 
-
-    if (result.length > 0) {
-        res.render('registreren', {
-            err: result,
-		    
-        });
-    } else {
-        return
-    }
-};
 
 

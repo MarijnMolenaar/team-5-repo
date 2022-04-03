@@ -8,9 +8,9 @@ const {ObjectId} = require('mongodb');
 const nodemailer = require('nodemailer');
 
 
-//const router = express.Router();
 
-const {validateUserSignUp, userValidation } = require('./middleware /validation/user'); 
+
+const {validateUserSignUp } = require('./middleware /validation/user'); 
 const {
     check,
     validationResult
@@ -65,10 +65,10 @@ app.get('/', (req, res) => {
 // De pagina voor het aanmaken van het profiel
 app.get('/makeprofile', (req, res) => {
     const title = "Make Profile";
-    //const err = null;
+    
 
    res.render('makeprofile', {errors: undefined, title, interests, errorMessage});
-    //res.render('makeprofile', {title, interests, err: err});
+   
 })
 
 // Met deze post route wordt het formulier dat door de gebruiker is ingevuld verstuurd naar de database
@@ -76,7 +76,6 @@ app.post('/makeprofile', validateUserSignUp, async (req, res) => {
     const errors = validationResult (req); 
     
     if (!errors.isEmpty()){
-      // return res.status(400).json('400', {errors: errors.array() } );
         const title = "error"; 
         console.log (errors);
         let errorMessage = Error;
