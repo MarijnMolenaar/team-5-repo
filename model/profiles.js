@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 
-//creating a schema for the profiles 
+//creating a schema for the profiles
 const profilesSchema = new mongoose.Schema({
     name:String,
     age:Number,
@@ -18,4 +18,3 @@ const profilesSchema = new mongoose.Schema({
 })
 //exports the data in the myprofile collection in de database to the profiiesschema
 module.exports = mongoose.model( "myprofile" , profilesSchema)
-
