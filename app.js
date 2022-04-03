@@ -7,6 +7,16 @@ const {MongoClient} = require('mongodb');
 const {ObjectId} = require('mongodb');
 const nodemailer = require('nodemailer');
 
+// const {
+//     check,
+//     validationResult
+// } = require('express-validator');
+
+
+// const router = express.Router();
+//const {validateUserSignUp, validationResult} = require('./middleware/validation/user'); 
+
+
 //////////////////////
 // Define Variables //
 //////////////////////
@@ -53,7 +63,11 @@ app.get('/', (req, res) => {
 // De pagina voor het aanmaken van het profiel
 app.get('/makeprofile', (req, res) => {
     const title = "Make Profile";
+   // const err = null; 
+   
     res.render('makeprofile', {title, interests});
+    //res.render('makeprofile', {title, interests, err: err});
+    
 })
 
 // Met deze post route wordt het formulier dat door de gebruiker is ingevuld verstuurd naar de database
@@ -108,7 +122,32 @@ app.get('/home', (req, res) => {
 // De route voor de discover pagina
 app.get('/discover', async (req, res) => {
     // De potentiële matches worden uit de database gehaald zodat deze kunnen worden laten zien aan de gebruiker
-    const matches = await db.collection('matches').find({"liked": ""}).toArray();
+    const matches = await db.collection('matches').findOne({"liked": ""});
+
+    const title = "Discover";
+    res.render('discover', {title, matches});
+})
+
+// De route voor het liken van een profiel
+app.post('/like', async (req, res) => {
+    const query1 = {_id: ObjectId(req.body.matchid)};
+    await db.collection('matches').updateOne(query1, {$set: {liked: "yes"}});
+
+    const query2 = {
+        "liked": "yes"
+    };
+    const likes = await db.collection('matches').find(query2).toArray();
+
+    const title = "Likes";
+    res.render('likes', {title, likes});
+})
+
+// De route voor het disliken van een profiel
+app.post('/dislike', async (req, res) => {
+    const query1 = {_id: ObjectId(req.body.matchid)};
+    await db.collection('matches').updateOne(query1, {$set: {liked: "no"}});
+
+    const matches = await db.collection('matches').findOne({"liked": ""});
 
     const title = "Discover";
     res.render('discover', {title, matches});
@@ -120,9 +159,9 @@ app.get('/filter', async (req, res) => {
     res.render('filter', {title});
 })
 
-app.post('filter', async (req, res) => {
+app.post('/filter', async (req, res) => {
     const query = {"country": req.body.country_filter, "type_a": req.body.type_a_filter, "liked": ""};
-    const filter = await db.collection('matches').find(query).toArray();
+    const filter = await db.collection('matches').findOne(query);
 
     const title = "Discover";
     res.render('discover', {title, matches: filter});
@@ -137,6 +176,14 @@ app.get('/likes', async (req, res) => {
 
     const title = "Likes";
     res.render('likes', {title, likes});
+})
+
+app.get('/likes/:_id', async (req, res) => {
+    const query = {_id: ObjectId(req.params._id)};
+    const matches = await db.collection('matches').findOne(query);
+
+    const title = "Liked Profile";
+    res.render('likedprofile', {title, matches});
 })
 
 // De route voor de profielpagina
@@ -160,10 +207,8 @@ app.get('/edit', async (req, res) => {
 // Met deze post route wordt het bewerkte profiel verstuurd naar de database
 app.post('/edit', async (req, res) => {
     // Alle onderdelen van het formulier (met bewerkingen) worden opnieuw opgehaald door middel van de BodyParser van express en samengevoegd in een variabele
-    console.log(req.body);
-
     let profile = {
-        url: req.body.avatar || req.body.original_image, //anders negeren 
+        url: req.body.avatar || req.body.original_image,
         name: req.body.name,
         age: req.body.age,
         country: req.body.country,
@@ -236,5 +281,3 @@ app.listen(port, () => {
 // Ik wilde ook graag een foto upload-functie erin verwerken, maar ben hier uiteindelijk helaas niet uitgekomen... Het was me toch iets te moeilijk, ik heb nu dus gewoon een dummyfoto gebruikt bij de profielfoto,
 // en bij het fotoupload knopje heb ik het wel voor elkaar gekregen dat je deze geuploade foto kan zien. Deze wordt dan uiteraard niet op de server opgeslagen en is daardoor ook niet zichtbaar op het uiteindelijke profiel
 // Ik hoop dat desalniettemin mijn functie goed genoeg is!
-
-

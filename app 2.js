@@ -7,6 +7,11 @@ const {MongoClient} = require('mongodb');
 const {ObjectId} = require('mongodb');
 const nodemailer = require('nodemailer');
 
+const {
+    check,
+    validationResult
+} = require('express-validator');
+
 //////////////////////
 // Define Variables //
 //////////////////////
