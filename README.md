@@ -64,7 +64,7 @@ De structuur van een document binnen mijn database ziet er als volgende uit:
 ```
 U dient twee verschillende database collections te maken, één bestemd voor het gebruikers profiel, en één bestemd voor de potentiële matches, beide documentstructuren zijn hetzelfde.
 
-## Contributers  
+## Contributors  
 * Tessa Willing 
 * Marijn Molenaar 
 * Josst Verweijen 
