@@ -17,5 +17,5 @@ const profilesSchema = new mongoose.Schema({
 
 })
 //exports de data in de myprofile collection in de database to the profiiesschema
-modules. exports = mongoose.model( "myprofile" , profilesSchema)
+module. exports = mongoose.model( "myprofile" , profilesSchema)
 
