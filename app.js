@@ -19,7 +19,7 @@ mongoose.connect(dbURI, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
-    .then((result) => console.log('connected to database'))
+    .then((result) => console.log('We have a connection to Mongoose'))
     .catch((err) => console.log(err));
 
 // mongoose.connect("mongodb://localhost/matchingapp", () => {
