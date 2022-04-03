@@ -73,6 +73,9 @@ U dient twee verschillende database collections te maken, één bestemd voor het
 ## License
 Wij hebben gebruik gemaakt van de [MIT License](https://github.com/Joosiii/BlokTech/blob/master/LICENSE).
 
+## Resources
+De recourses die wij gebruikt hebben staan vermeld binnen onze Wiki, in de [Bronnenlijst](https://github.com/MarijnMolenaar/team-5-repo/wiki/Bronnen-en-resources)
+
 ----------------------
 Lees voor meer informatie verder in de [Wiki](https://github.com/Joosiii/BlokTech/wiki)!
 
