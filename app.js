@@ -7,6 +7,16 @@ const {MongoClient} = require('mongodb');
 const {ObjectId} = require('mongodb');
 const nodemailer = require('nodemailer');
 
+// const {
+//     check,
+//     validationResult
+// } = require('express-validator');
+
+
+// const router = express.Router();
+//const {validateUserSignUp, validationResult} = require('./middleware/validation/user'); 
+
+
 //////////////////////
 // Define Variables //
 //////////////////////
@@ -53,18 +63,23 @@ app.get('/', (req, res) => {
 // De pagina voor het aanmaken van het profiel
 app.get('/makeprofile', (req, res) => {
     const title = "Make Profile";
+    // const err = null;
+
     res.render('makeprofile', {title, interests});
+     //res.render('makeprofile', {title, interests, err: err});
 })
 
 // Met deze post route wordt het formulier dat door de gebruiker is ingevuld verstuurd naar de database
 app.post('/makeprofile', async (req, res) => {
     // Alle onderdelen van het formulier worden opgehaald door middel van de BodyParser van express en samengevoegd in een variabele
     let profile = {
+        url: req.body.avatar,
         name: req.body.name,
         age: req.body.age,
         country: req.body.country,
         bio: req.body.bio,
         interests: arrayify(req.body.interests),
+        url_a: req.body.avatar_a,
         name_a: req.body.name_a,
         age_a: req.body.age_a,
         type_a: req.body.type_a,
@@ -162,7 +177,7 @@ app.get('/likes', async (req, res) => {
     res.render('likes', {title, likes});
 })
 
-app.get('/:_id', async (req, res) => {
+app.get('/likes/:_id', async (req, res) => {
     const query = {_id: ObjectId(req.params._id)};
     const matches = await db.collection('matches').findOne(query);
 
@@ -192,11 +207,13 @@ app.get('/edit', async (req, res) => {
 app.post('/edit', async (req, res) => {
     // Alle onderdelen van het formulier (met bewerkingen) worden opnieuw opgehaald door middel van de BodyParser van express en samengevoegd in een variabele
     let profile = {
+        url: req.body.avatar || req.body.original_image,
         name: req.body.name,
         age: req.body.age,
         country: req.body.country,
         bio: req.body.bio,
         interests: arrayify(req.body.interests),
+        url_a: req.body.avatar_a || req.body.original_image_a,
         name_a: req.body.name_a,
         age_a: req.body.age_a,
         type_a: req.body.type_a,
