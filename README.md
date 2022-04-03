@@ -24,19 +24,19 @@ Commando's om de server op te starten:
 
 Het project maagt gebruik van de volgende dependencies:
 
-`"array-back": "^6.2.2",
-    "arrayify": "^1.0.0",
-    "body-parser": "^1.19.2",
-    "camelcase": "^6.3.0",
-    "date-fns": "^2.28.0",
-    "dotenv": "^16.0.0",
-    "ejs": "^3.1.6",
-    "express": "^4.17.3",
-    "mongodb": "^4.4.1",
-    "multer": "^1.4.4",
-    "nodemailer": "^6.7.3",
-    "server": "^1.0.37",
-    "slug": "^5.2.0"`
+`"array-back": "^6.2.2"`
+    `"arrayify": "^1.0.0"`
+    `"body-parser": "^1.19.2"`
+    `"camelcase": "^6.3.0"`
+    `"date-fns": "^2.28.0"`
+    `"dotenv": "^16.0.0"`
+    `"ejs": "^3.1.6"`
+    `"express": "^4.17.3"`
+    `"mongodb": "^4.4.1"`
+    `"multer": "^1.4.4"`
+    `"nodemailer": "^6.7.3"`
+    `"server": "^1.0.37"`
+    `"slug": "^5.2.0"`
 
 
 # Contributers  * Tessa Willing 
