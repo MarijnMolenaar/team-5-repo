@@ -10,11 +10,17 @@ Met de Matching a pet app kunnen gebruikers profielen aanmaken voor zichzelf en 
 
 Allereerst dient npm geinstalleerd te worden:
 
-'npm install'
+`npm install`
 
 Vervolgens moet node worden gedownload:
 
-'npm install node'
+`npm install node`
+
+Commando's om de server op te starten:
+
+`"start": "node app.js",
+ "startdev": "nodemon app.js"`
+
 
 # Contributers  * Tessa Willing 
 * Marijn Molenaar 
