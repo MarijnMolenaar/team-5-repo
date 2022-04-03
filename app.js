@@ -6,6 +6,29 @@ const multer = require('multer');
 const {MongoClient} = require('mongodb');
 const {ObjectId} = require('mongodb');
 const nodemailer = require('nodemailer');
+const mongoose = require("mongoose");
+const matches = require('./model/matches');
+
+////////////////////////////////////
+// Mongoose verbinden met MongoDB //
+////////////////////////////////////
+
+const dbURI = process.env.DB_URI
+
+mongoose.connect(dbURI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    .then((result) => console.log('connected to database'))
+    .catch((err) => console.log(err));
+
+// mongoose.connect("mongodb://localhost/matchingapp", () => {
+//         console.log("connected")
+//     },
+//     //for error 
+//     e => console.error(e)
+
+//)
 
 
 
