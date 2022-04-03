@@ -7,14 +7,16 @@ const {MongoClient} = require('mongodb');
 const {ObjectId} = require('mongodb');
 const nodemailer = require('nodemailer');
 
-// const {
-//     check,
-//     validationResult
-// } = require('express-validator');
+
+//const router = express.Router();
+
+const {validateUserSignUp, userValidation } = require('./middleware /validation/user'); 
+const {
+    check,
+    validationResult
+} = require('express-validator');
 
 
-// const router = express.Router();
-//const {validateUserSignUp, validationResult} = require('./middleware/validation/user'); 
 
 
 //////////////////////
@@ -23,7 +25,7 @@ const nodemailer = require('nodemailer');
 const port = process.env.PORT || 4000;
 let db = null;
 const interests = ["Travel", "Dogs", "Cooking", "Surfing", "Politics", "Cats", "Fitness", "Reading", "Netflix", "Partying"];
-
+let errorMessage = '';
 //////////////////
 // Static Files //
 //////////////////
@@ -63,14 +65,24 @@ app.get('/', (req, res) => {
 // De pagina voor het aanmaken van het profiel
 app.get('/makeprofile', (req, res) => {
     const title = "Make Profile";
-    // const err = null;
+    //const err = null;
 
-    res.render('makeprofile', {title, interests});
-     //res.render('makeprofile', {title, interests, err: err});
+   res.render('makeprofile', {errors: undefined, title, interests, errorMessage});
+    //res.render('makeprofile', {title, interests, err: err});
 })
 
 // Met deze post route wordt het formulier dat door de gebruiker is ingevuld verstuurd naar de database
-app.post('/makeprofile', async (req, res) => {
+app.post('/makeprofile', validateUserSignUp, async (req, res) => {
+    const errors = validationResult (req); 
+    
+    if (!errors.isEmpty()){
+      // return res.status(400).json('400', {errors: errors.array() } );
+        const title = "error"; 
+        console.log (errors);
+        let errorMessage = Error;
+        return res.status(400).render('makeprofile', {errors: errors.array() , title, errorMessage, interests});
+       
+    }
     // Alle onderdelen van het formulier worden opgehaald door middel van de BodyParser van express en samengevoegd in een variabele
     let profile = {
         url: req.body.avatar,

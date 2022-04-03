@@ -192,6 +192,7 @@ h1 {
     object-fit: cover;
     margin: auto;
     padding: 0 0 1em 0;
+    border-radius: 40px 40px 0px 0px ;
 }
 
 #humanprofile h2,
@@ -439,4 +440,10 @@ select {
     border: none;
     border-radius: 25px;
     padding: 0.75em 1em;
+}
+
+#errorhandling{
+    margin: 20px 0px;
+    color: darkred;
+    font-size: 1.2em;
 }

@@ -16,6 +16,14 @@
             <a id="hprofe" href="#" onclick="HumanProfileEdit();"><img src="images/icon_human.png" alt=""></a>
             <a id="aprofe" href="#" onclick="AnimalProfileEdit();"><img src="images/icon_animal.png" alt=""></a>
         </div>
+        <div id="errorhandling">
+            <% if (errors){ %>
+                <% errors.forEach(error =>{ %>
+                    <p> <%= error.msg %> </p>
+                <% }) %>
+            <% } %>
+        </div>
+        
         <form action="/makeprofile" method="post">
             <div id="humanprofileedit">
                 <label for="avatar">Choose a profile picture</label>
@@ -70,8 +78,14 @@
                 <label for="bio_a">Animal Biography</label>
                 <textarea name="bio_a" id="bio_a" cols="30" rows="5"></textarea>
             </div>
+           
+            
+            
+           
+            
             <input type="submit" value="Opslaan">
         </form>
+
     </main>
 
     <script src="js/makescript.js"></script>
