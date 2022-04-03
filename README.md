@@ -68,7 +68,7 @@ De structuur van een document binnen onze database ziet er als volgende uit:
 U dient twee verschillende database collections te maken, één bestemd voor het gebruikers profiel, en één bestemd voor de potentiële matches, beide documentstructuren zijn hetzelfde.
 
 ## Test Application
-Wij hebben onze applicatie live gehost op Heroku, deze kan u dan ook via onderstaande link uittesten en gebruiken.
+Wij hebben onze applicatie live gehost op Heroku, deze kan u dan ook via onderstaande link uittesten en gebruiken.\
 [Match-A-Pet](https://match-a-pet-app.herokuapp.com/)
 
 ## Contributors  
