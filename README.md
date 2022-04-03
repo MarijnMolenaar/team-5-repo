@@ -23,11 +23,14 @@ Verder maakt het project gebruik van de volgende dependencies:\
     `"dotenv": "^16.0.0"`
     `"ejs": "^3.1.6"`
     `"express": "^4.17.3"`
+    `"express-validator": "^6.14.0",`
     `"mongodb": "^4.4.1"`
+    `"mongoose": "^6.2.9",`
     `"multer": "^1.4.4"`
     `"nodemailer": "^6.7.3"`
     `"server": "^1.0.37"`
     `"slug": "^5.2.0"`
+    `"uglify-js": "^3.15.3"`
 
 Om onze applicatie op uw eigen apparaat te installeren en uit te voeren moeten er een aantal simpele stappen ondernomen worden. Ten eerste moet de repository gecloned worden, vul de volgende regel in in de GIT Bash.
 ```
@@ -45,7 +48,7 @@ U krijgt een alert dat de app gehost wordt binnen uw lokale systeem, in dit geva
 
 Om gebruik te maken van de MongoDB database heeft u een eigen .env file nodig waarin u uw eigen gegevens invult. Om te kijken hoe dit moet kunt u de code binnen [VOORBEELDenv](https://github.com/MarijnMolenaar/team-5-repo/blob/main/VOORBEELDenv) kopiëren en personaliseren binnen uw eigen file.
 
-De structuur van een document binnen mijn database ziet er als volgende uit:
+De structuur van een document binnen onze database ziet er als volgende uit:
 ```
   {
         "url": "",
