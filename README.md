@@ -12,7 +12,7 @@
 * Whitney Abrah 
 
 # License
-We hebben gebruitk gemaaakt van de MIT license
+We hebben gebruik gemaaakt van de MIT license
 
 # Resources
 
