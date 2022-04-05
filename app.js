@@ -79,10 +79,31 @@ const transporter = nodemailer.createTransport({
 // De eerste route is de pagina waar de gebruiker op komt wanneer hij/zij als eerste de app opent
 app.get('/', (req, res) => {
     // De database wordt leeggemaakt, de gebruiker moet voor het eerst zijn/haar profiel aanmaken dus de database mag nog geen profiel bevatten
-    db.collection('myprofile').deleteMany({});
+    // db.collection('myprofile').deleteMany({}); // please remove this/don't use this anymore
+
+    // TODO:
+    // user surfs to 'matchapet.nl/', what should happen next?
+    // you have to check: are they logged in yet, or not?
+    // --> if not, then what? redirect somewhere, like the login page?
+    // --> if they are logged in, then what? redirect somewhere, like the profile page? or a _home_ page filled with data linked to their account (from the database)?
+
+    // if (ingelogd) {
+    //     doe dan iets
+    // } else if (maar wel een account) {
+    //     doe dan iets
+    // } else { // niet ingelogd, ook geen account
+    //     doe dan iets
+    // }
 
     const title = "Match-A-Pet";
     res.render('index', {title});
+})
+
+// De route voor de homepagina
+app.get('/home', (req, res) => {
+    // TODO: what if the user is logged in etc
+    const title = "Home";
+    res.render('home', {title});
 })
 
 // De pagina voor het aanmaken van het profiel
@@ -90,24 +111,26 @@ app.get('/makeprofile', (req, res) => {
     const title = "Make Profile";
     
 
-   res.render('makeprofile', {errors: undefined, title, interests, errorMessage});
-   
+   res.render('makeprofile', {errors: undefined, title, interests, errorMessage}); // TODO: check if the errors: undefined is necessary
 })
 
 // Met deze post route wordt het formulier dat door de gebruiker is ingevuld verstuurd naar de database
 app.post('/makeprofile', validateUserSignUp, async (req, res) => {
     const errors = validationResult (req); 
     
-    if (!errors.isEmpty()){
+    // my guess on what happens here: errorafhandeling; wanneer de validatie errors geeft, wordt de errorMessage aangepast en wordt de gebruiker terug gestuurd naar de makeprofile pagina
+    if (!errors.isEmpty()){ // als er geen errors zijn die empty zijn, dan wordt de gebruiker doorverwezen naar de makeprofile pagina en de errors meegestuurd
         const title = "error"; 
         console.log (errors);
         let errorMessage = Error;
-        return res.status(400).render('makeprofile', {errors: errors.array() , title, errorMessage, interests});
-       
-    }
+        return res.status(400).render('makeprofile', {errors: errors.array() , title, errorMessage, interests});    
+    } 
+
     // Alle onderdelen van het formulier worden opgehaald door middel van de BodyParser van express en samengevoegd in een variabele
     let profile = {
         url: req.body.avatar,
+//TODO: email? req.body.mail is already usable,
+//TODO: password?
         name: req.body.name,
         age: req.body.age,
         country: req.body.country,
@@ -138,18 +161,90 @@ app.post('/makeprofile', validateUserSignUp, async (req, res) => {
     });
     
     // Vervolgens wordt door middel van het inserten van deze variabele het profiel opgeslagen in de database
-    await db.collection('myprofile').insertOne(profile);
+    await db.collection('myprofile').insertOne(profile); // what if this doesn't work? shouldn't mongodb be able to send an error message about that then?
+    // and: something to think about: what if there is an existing user with the same email in the database already? 
+    // IF you will be using sesisons: you can maybe redirect to a login page instead and have the user sign in with their newly created account (easiest solution as it seperates your functionalities best.. not a good IRL option though!)
 
-    const profiles = await db.collection('myprofile').findOne();
 
-    const title = "Succesfully Made Profile Page!";
-    res.render('home', {title, profiles});
+    const dbProfile = await db.collection('myprofile').findOne({
+        email: req.body.mail // find the user with the same email as the one that just registered
+    }, (err, user) => {
+        // is there a profile found? how to check this? (hint: check the mongodb docs)
+        // what if there is no profile found?
+        // how to check if this matches the person that just registered? password?
+
+        let dbProfileData = // TODO: what data should be passed on to the profile page template?
+        // if everything's alright, then redirect to the profile page and send the user data with it
+        res.redirect('/profile', dbProfileData); // also an option: send only the email and the password, and fetch the user data from the database again (this will be a lot of work for the server and db though..)
+    }); 
+// OlD STUFF
+    // const title = "Succesfully Made Profile Page!";
+    // res.render('home', {title, profiles});
+    
 })
 
-// De route voor de homepagina
-app.get('/home', (req, res) => {
-    const title = "Home";
-    res.render('home', {title});
+// De route voor de profielpagina
+app.get('/profile', dbProfileData, async (req, res) => {
+    console.log(dbProfileData) // TODO: check if this is the data you want
+    if (!dbProfileData) { // what if the user doesn't come on this page after the POST from makeprofile? thus, dbProfileData isn't passed?
+        
+    } else { // if there is profile data from the current user available, then what do we want? what should we do?
+
+    }
+
+        
+
+// BELOW: former stuff, not needed anymore, but might be useful for look back on as process (do remove later though)
+    // what if someone navigates to matchapet.nl/profile, but isn't logged in
+    // Het eerder ingevulde profiel wordt nu uit de database gehaald zodat deze kan worden laten zien aan de gebruiker
+    
+    // and if someone _is_ logged in, then what?
+    // const profiles = await db.collection('myprofile').findOne(); // then you can show the profile of the logged in user, and how do we look up the current user's data from the database?
+
+    // const title = "Profile Page";
+
+    // res.render('profile', {title, profiles});
+  
+})
+
+
+// THE FUNCTIONALITIES BELOW, WE'LL TALK ABOUT AFTER ABOVE TO-DO's ARE DONE
+// De route voor de editpagina
+app.get('/edit', async (req, res) => {
+    // Het profiel wordt uit de database gehaald zodat deze ingevuld kan worden in de invoervelden, zodat de gebruiker deze niet allemaal opnieuw hoeft in te vullen
+    const profiles = await db.collection('myprofile').findOne();
+
+    const title = "Profile Editor";
+    res.render('edit', {title, profiles, interests});
+})
+
+// Met deze post route wordt het bewerkte profiel verstuurd naar de database
+app.post('/edit', async (req, res) => {
+    // Alle onderdelen van het formulier (met bewerkingen) worden opnieuw opgehaald door middel van de BodyParser van express en samengevoegd in een variabele
+    let profile = {
+        url: req.body.avatar || req.body.original_image,
+        name: req.body.name,
+        age: req.body.age,
+        country: req.body.country,
+        bio: req.body.bio,
+        interests: arrayify(req.body.interests),
+        url_a: req.body.avatar_a || req.body.original_image_a,
+        name_a: req.body.name_a,
+        age_a: req.body.age_a,
+        type_a: req.body.type_a,
+        breed_a: req.body.breed_a,
+        bio_a: req.body.bio_a
+    };
+
+    // Het aangepaste profiel moet het oude profiel vervangen, dit wordt gedaan met de replaceOne functie    
+    const query = {};
+    await db.collection('myprofile').replaceOne(query, profile);
+
+    // Het aangepaste proifel wordt gezocht in de database zodat deze weer op de profielpagina laten zien kan worden
+    const profiles = await db.collection('myprofile').findOne();
+
+    const title = "Succesfully Edited Profile Page!";
+    res.render('profile', {title, profiles});
 })
 
 // De route voor de discover pagina
@@ -218,54 +313,6 @@ app.get('/likes/:_id', async (req, res) => {
     const title = "Liked Profile";
     res.render('likedprofile', {title, matches});
 })
-
-// De route voor de profielpagina
-app.get('/profile', async (req, res) => {
-    // Het eerder ingevulde profiel wordt nu uit de database gehaald zodat deze kan worden laten zien aan de gebruiker
-    const profiles = await db.collection('myprofile').findOne();
-
-    const title = "Profile Page";
-    res.render('profile', {title, profiles});
-})
-
-// De route voor de editpagina
-app.get('/edit', async (req, res) => {
-    // Het profiel wordt uit de database gehaald zodat deze ingevuld kan worden in de invoervelden, zodat de gebruiker deze niet allemaal opnieuw hoeft in te vullen
-    const profiles = await db.collection('myprofile').findOne();
-
-    const title = "Profile Editor";
-    res.render('edit', {title, profiles, interests});
-})
-
-// Met deze post route wordt het bewerkte profiel verstuurd naar de database
-app.post('/edit', async (req, res) => {
-    // Alle onderdelen van het formulier (met bewerkingen) worden opnieuw opgehaald door middel van de BodyParser van express en samengevoegd in een variabele
-    let profile = {
-        url: req.body.avatar || req.body.original_image,
-        name: req.body.name,
-        age: req.body.age,
-        country: req.body.country,
-        bio: req.body.bio,
-        interests: arrayify(req.body.interests),
-        url_a: req.body.avatar_a || req.body.original_image_a,
-        name_a: req.body.name_a,
-        age_a: req.body.age_a,
-        type_a: req.body.type_a,
-        breed_a: req.body.breed_a,
-        bio_a: req.body.bio_a
-    };
-
-    // Het aangepaste profiel moet het oude profiel vervangen, dit wordt gedaan met de replaceOne functie    
-    const query = {};
-    await db.collection('myprofile').replaceOne(query, profile);
-
-    // Het aangepaste proifel wordt gezocht in de database zodat deze weer op de profielpagina laten zien kan worden
-    const profiles = await db.collection('myprofile').findOne();
-
-    const title = "Succesfully Edited Profile Page!";
-    res.render('profile', {title, profiles});
-})
-
 
 ////////////////
 // Error Page //
