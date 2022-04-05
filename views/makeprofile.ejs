@@ -40,18 +40,18 @@
                 <select name="country" id="country"></select>
                 <label for="bio">Profile Biography</label>
                 <textarea name="bio" id="bio" cols="30" rows="5"></textarea>
-                <div id="int-list">
+                <div id="int-list"> <!--do you really need a div here? or above?-->
                     <fieldset>
                         <legend>Interests:</legend>
                         <% interests.forEach(function(interest){ %>
                         <input type="checkbox" name="interests" value="<%= interest %>" id="<%= interest %>">
-                        <label for="<%= interest %>"><%= interest %></label><br>
+                        <label for="<%= interest %>"><%= interest %></label><br> <!--please don't use <br> unless it's in a poem or address-->
                         <% }) %>
                     </fieldset>
                 </div>
                 <label for="mail">E-mailaddress</label>
                 <input type="text" id="mail" name="mail">
-          
+                <!-- password? -->
             </div>
 
             <div id="animalprofileedit">
@@ -79,10 +79,7 @@
                 <textarea name="bio_a" id="bio_a" cols="30" rows="5"></textarea>
             </div>
            
-            
-            
-           
-            
+          
             <input type="submit" value="Opslaan">
         </form>
 
