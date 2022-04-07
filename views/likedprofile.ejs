@@ -7,40 +7,38 @@
 
 <body>
     <header>
-        <a id="back" href="/likes"><img src="/images/icon_arrowrightwhite.png" alt=""></a> 
+        <a class="back" href="/likes"><img src="/images/icon_arrowrightwhite.png" alt=""></a> 
         <a href="/home"><img src="/images/logowhite.png" alt=""></a>   
     </header>
 
     <%- include('includes/nav'); -%>
 
-    <main id="likedprofile">
-        <section id="match">
-            <div id="profilenav">
-                <a id="hprof" href="#" onclick="HumanProfile();"><img src="/images/icon_human.png" alt=""></a>
-                <a id="aprof" href="#" onclick="AnimalProfile();"><img src="/images/icon_animal.png" alt=""></a>
-            </div>
-            <div id="humanprofile">
-                <img id="previewpic" src="/images/previewpic3.jpg" alt="">
+    <main class="profile">
+        <section class="profile-nav">
+            <a href="#" class="humanbutton"><img src="/images/icon_human.png" alt=""></a>
+            <a href="#" class="animalbutton"><img src="/images/icon_animal.png" alt=""></a>
+        </section>
+        <section class="profile-human">
+            <img src="/images/previewpic3.jpg" alt="">
 
-                <h2 id="h2check"><%= matches.name %></h2>
-                <h3><%= matches.age %> years old</h3>
-                <p id="selected"><%= matches.country %></p>
-                <p><%= matches.bio %></p>
-                <ul id="interestlist">
-                    <% matches.interests.forEach(function(item){ %>
-                        <li><%= item %></li>
-                        <% }) %>
-                </ul>
-            </div>
-            <div id="animalprofile">
-                <img id="previewpic_a" src="/images/previewpic3.jpg" alt="">
+            <h2><%= matches.name %></h2>
+            <h3><%= matches.age %> years old</h3>
+            <p><%= matches.country %></p>
+            <p><%= matches.bio %></p>
+            <ul>
+                <% matches.interests.forEach(function(item){ %>
+                    <li><%= item %></li>
+                    <% }) %>
+            </ul>
+        </section>
+        <section class="profile-animal">
+            <img src="/images/previewpic3.jpg" alt="">
 
-                <h2><%= matches.name_a %></h2>
-                <h3><%= matches.age_a %> years old</h3>
-                <p><%= matches.type_a %></p>  
-                <p><%= matches.breed_a %></p>  
-                <p><%= matches.bio_a %></p>        
-            </div>
+            <h2><%= matches.name_a %></h2>
+            <h3><%= matches.age_a %> years old</h3>
+            <p><%= matches.type_a %></p>  
+            <p><%= matches.breed_a %></p>  
+            <p><%= matches.bio_a %></p>        
         </section>
     </main>
 
