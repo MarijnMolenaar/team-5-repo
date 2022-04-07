@@ -1,0 +1,106 @@
+
+/* styling make profile */
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.75em;
+    margin-bottom: 6em;
+}
+
+label,
+form p,
+p {
+    margin-bottom: 0.5em;
+    font-weight: 700;
+}
+
+input[type=text],
+[type=email],
+[type=date],
+[type=password] {
+    width: 100%;
+    background-color: white;
+    border: none;
+    border-radius: 2.5em;
+    margin-bottom: 1em;
+    padding: 0.75em 1em;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+#int-list {
+    height: 6.25em;
+    overflow: auto;
+    margin-bottom: 1em;
+}
+
+textarea {
+    width: 100%;
+    background-color: white;
+    border: none;
+    border-radius: 25px;
+    margin-bottom: 1em;
+    padding: 0.5em 1em;
+    font-family: 'Roboto',
+        sans-serif;
+}
+
+fieldset {
+    padding: 0.5em 1em;
+    background-color: white;
+    border: none;
+    border-radius: 25px;
+}
+
+legend {
+    float: left;
+    width: 100%;
+    margin-bottom: 0.5em;
+    font-weight: 700;
+}
+
+input[type=checkbox] {
+    margin-right: 0.5em;
+}
+
+fieldset label {
+    font-weight: 400;
+}
+
+
+input[type=submit] {
+    margin-top: 1em;
+    width: 100%;
+    padding: 1em 2em;
+    background-color: #a50407;
+    color: white;
+    border-radius: 2.5em;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+
+select {
+    width: 100%;
+    margin-bottom: 1em;
+    border: none;
+    border-radius: 25px;
+    padding: 0.75em 1em;
+}
+
+
+
+
+/* error handling  */
+
+.errorhandling {
+    margin: 20px 0px;
+    color: darkred;
+    font-size: 1.2em;
+}
+
+
+#humanprofileedit {
+    padding-bottom: 0;
+}
