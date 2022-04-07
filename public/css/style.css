@@ -300,6 +300,7 @@ button {
     margin-right: 1em;
 }
 
+<<<<<<< Updated upstream
 
 
 /* Make Profile & Edit Page Styling */
@@ -392,3 +393,24 @@ select {
     border-radius: 25px;
     padding: 0.75em 1em;
 }
+=======
+#likes #arrow {
+    height: 30px;
+    width: 30px;
+}
+
+#idcheck {
+    display: none;
+}
+
+#likedprofile #match {
+    padding-bottom: 1em;
+    margin-top: 2em;
+}
+
+#errorhandling{
+    margin: 20px 0px;
+    color: darkred;
+    font-size: 1.2em;
+} 
+>>>>>>> Stashed changes

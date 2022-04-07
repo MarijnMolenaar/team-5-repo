@@ -7,10 +7,42 @@ const {MongoClient} = require('mongodb');
 const {ObjectId} = require('mongodb');
 const nodemailer = require('nodemailer');
 
+<<<<<<< Updated upstream
 // const {
 //     check,
 //     validationResult
 // } = require('express-validator');
+=======
+////////////////////////////////////
+// Mongoose verbinden met MongoDB //
+////////////////////////////////////
+
+const dbURI = process.env.DB_URI
+
+mongoose.connect(dbURI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    .then((result) => console.log('We have a connection to Mongoose'))
+    .catch((err) => console.log(err));
+
+// mongoose.connect("mongodb://localhost/matchingapp", () => {
+//         console.log("connected")
+//     },
+//     //for error 
+//     e => console.error(e)
+
+//)
+
+
+
+
+const {validateUserSignUp } = require('./middleware/validation/user'); 
+const {
+    check,
+    validationResult
+} = require('express-validator');
+>>>>>>> Stashed changes
 
 
 // const router = express.Router();
@@ -105,7 +137,49 @@ app.post('/makeprofile', async (req, res) => {
     });
     
     // Vervolgens wordt door middel van het inserten van deze variabele het profiel opgeslagen in de database
+<<<<<<< Updated upstream
     await db.collection('myprofile').insertOne(profile);
+=======
+    await db.collection('myprofile').insertOne(profile); // what if this doesn't work? shouldn't mongodb be able to send an error message about that then?
+    // and: something to think about: what if there is an existing user with the same email in the database already? 
+    // IF you will be using sesisons: you can maybe redirect to a login page instead and have the user sign in with their newly created account (easiest solution as it seperates your functionalities best.. not a good IRL option though!)
+
+
+    const dbProfile = await db.collection('myprofile').findOne({
+        email: req.body.mail // find the user with the same email as the one that just registered
+    }, (err, user) => {
+        // is there a profile found? how to check this? (hint: check the mongodb docs)
+        // what if there is no profile found?
+        // how to check if this matches the person that just registered? password?
+
+        let dbProfileData = // TODO: what data should be passed on to the profile page template?
+        // if everything's alright, then redirect to the profile page and send the user data with it
+        res.redirect('/profile', dbProfileData); // also an option: send only the email and the password, and fetch the user data from the database again (this will be a lot of work for the server and db though..)
+    }); 
+// OlD STUFF
+    // const title = "Succesfully Made Profile Page!";
+    // res.render('home', {title, profiles});
+    
+})
+
+// De route voor de profielpagina
+app.get('/profile', async (req, res) => {
+    console.log(dbProfileData) // TODO: check if this is the data you want
+    if (!dbProfileData) { // what if the user doesn't come on this page after the POST from makeprofile? thus, dbProfileData isn't passed?
+        
+    } else { // if there is profile data from the current user available, then what do we want? what should we do?
+
+    }
+
+        
+
+// BELOW: former stuff, not needed anymore, but might be useful for look back on as process (do remove later though)
+    // what if someone navigates to matchapet.nl/profile, but isn't logged in
+    // Het eerder ingevulde profiel wordt nu uit de database gehaald zodat deze kan worden laten zien aan de gebruiker
+    
+    // and if someone _is_ logged in, then what?
+    // const profiles = await db.collection('myprofile').findOne(); // then you can show the profile of the logged in user, and how do we look up the current user's data from the database?
+>>>>>>> Stashed changes
 
     const profiles = await db.collection('myprofile').findOne();
 
