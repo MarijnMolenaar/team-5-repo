@@ -12,24 +12,33 @@
 
     <main>
         <h1>Edit Profile</h1>
-        <div id="profilenave">
+
+        <section id="profilenave">
             <a id="hprofe" href="#" onclick="HumanProfileEdit();"><img src="images/icon_human.png" alt=""></a>
             <a id="aprofe" href="#" onclick="AnimalProfileEdit();"><img src="images/icon_animal.png" alt=""></a>
-        </div>
+        </section>
+
         <form action="/edit" method="post">
-            <div id="humanprofileedit">
+            <section id="humanprofileedit">
+
+                <h2> Your profile</h2>
+
                 <label for="avatar">Choose a profile picture</label>
                 <input type="hidden" name="original_image" value="<%= profiles.url %>" />
-                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" alt="" >
-                
+                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" alt="">
+
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" value="<%= profiles.name %>">
+
                 <label for="age">Age</label>
-                <input type="text" id="age" name="age" value="<%= profiles.age %>">
+                <input type="date" id="age" name="age" value="<%= profiles.age %>">
+
                 <label for="country">Country</label>
                 <select name="country" id="country"></select>
+
                 <label for="bio">Profile Biography</label>
                 <textarea name="bio" id="bio" cols="30" rows="5"><%= profiles.bio %></textarea>
+
                 <div id="int-list">
                     <fieldset id="interestfieldset">
                         <legend>Interests:</legend>
@@ -39,18 +48,21 @@
                         <% }) %>
                     </fieldset>
                 </div>
-            
-            </div> 
+            </section>
 
-            <div id="animalprofileedit">
+            <section id="animalprofileedit">
+                <h2>Profile animal</h2>
+
                 <label for="avatar">Choose a profile picture</label>
                 <input type="hidden" name="original_image_a" value="<%= profiles.url_a %>" />
-                <input type="file" id="avatar_a" name="avatar_a" accept="image/png, image/jpeg" alt="" >
-               
+                <input type="file" id="avatar_a" name="avatar_a" accept="image/png, image/jpeg" alt="">
+
                 <label for="name_a">Name</label>
                 <input type="text" id="name_a" name="name_a" value="<%= profiles.name_a %>">
+
                 <label for="age_a">Age</label>
-                <input type="text" id="age_a" name="age_a" value="<%= profiles.age_a %>">
+                <input type="date" id="age_a" name="age_a" value="<%= profiles.age_a %>">
+
                 <label for="type_a">Animal Type</label>
                 <select name="type_a" id="type_a" value="<%= profiles.type_a %>">
                     <option value="Dog">Dog</option>
@@ -62,11 +74,14 @@
                     <option value="Hamster">Hamster</option>
                     <option value="Hedgehog">Hedgehog</option>
                 </select>
+
                 <label for="breed_a">Breed</label>
                 <input type="text" id="breed_a" name="breed_a" value="<%= profiles.breed_a %>">
+
                 <label for="bio_a">Animal Biography</label>
                 <textarea name="bio_a" id="bio_a" cols="30" rows="5"><%= profiles.bio_a %></textarea>
-            </div>
+            </section>
+
             <input type="submit" value="Opslaan">
         </form>
     </main>
