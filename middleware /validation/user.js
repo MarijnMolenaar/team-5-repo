@@ -1,4 +1,4 @@
- const req = require("express/lib/request");
+const req = require("express/lib/request");
 
 const {
     check,
@@ -28,8 +28,18 @@ exports.validateUserSignUp = [
             throw new Error('- email is not the same!')
         }
         return true;
-    })  
- //hoe kan het dat ik altijd email is not de same krijg ookal is die al hetzelfde 
+    }), 
+
+    check('password').trim().not().isEmpty().withMessage('- Password is empty'). isLength({min: 3, max: 20}),  
+    
+
+    check('ConfirmPassword').trim().not().isEmpty().custom((value, {req}) => {
+        if(value !== req.body.password){
+            throw new Error('- name is not the same!')
+        }
+        return true;
+    }),
+ 
  //en waarom krijg ik altijd de melding invalid value als error erbij als ik niks invul, en hoe krijg ik dit weg?.. kan dat 
 
 ]
