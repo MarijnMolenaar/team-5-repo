@@ -33,7 +33,7 @@ mongoose.connect(dbURI, {
 
 
 
-const {validateUserSignUp } = require('./middleware /validation/user'); 
+const {validateUserSignUp } = require('./middleware/validation/user'); 
 const {
     check,
     validationResult
@@ -173,7 +173,7 @@ app.post('/makeprofile', validateUserSignUp, async (req, res) => {
         // what if there is no profile found?
         // how to check if this matches the person that just registered? password?
 
-        let dbProfileData = // TODO: what data should be passed on to the profile page template?
+        let dbProfileData = dbProfile// TODO: what data should be passed on to the profile page template?
         // if everything's alright, then redirect to the profile page and send the user data with it
         res.redirect('/profile', dbProfileData); // also an option: send only the email and the password, and fetch the user data from the database again (this will be a lot of work for the server and db though..)
     }); 
@@ -189,7 +189,7 @@ app.get('/profile', dbProfileData, async (req, res) => {
     if (!dbProfileData) { // what if the user doesn't come on this page after the POST from makeprofile? thus, dbProfileData isn't passed?
         
     } else { // if there is profile data from the current user available, then what do we want? what should we do?
-
+        
     }
 
         
