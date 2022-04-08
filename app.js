@@ -99,27 +99,36 @@ app.get('/', (req, res) => {
     // --> if not, then what? redirect somewhere, like the login page?
     // --> if they are logged in, then what? redirect somewhere, like the profile page? or a _home_ page filled with data linked to their account (from the database)?
 
-    // if (ingelogd) {
-    //     doe dan iets
-    // } else if (maar wel een account) {
-    //     doe dan iets
-    // } else { // niet ingelogd, ook geen account
-    //     doe dan iets
-    // }
-
-    const title = "Match-A-Pet";
-    res.render('index', {
-        title
-    });
+    if (!req.session.user) {
+        console.log("geenuser");
+        const title = 'Login';
+        res.render('login', {
+            title
+        })
+    } else if (!req.body.name) {
+        const title = "Make Profile";
+        res.render('makeprofile', {
+            title
+        });
+    } else {
+        const title = "Home";
+        res.render('home', {
+            title
+        })
+    }
 })
 
 // De route voor de homepagina
 app.get('/home', (req, res) => {
-    // TODO: what if the user is logged in etc
-    const title = "Home";
-    res.render('home', {
-        title
-    });
+    if (!req.session.user) {
+        res.redirect('login');
+    } else {
+        // TODO: what if the user is logged in etc
+        const title = "Home";
+        res.render('home', {
+            title
+        });
+    }
 })
 
 // De pagina voor het aanmaken van het profiel
@@ -155,13 +164,13 @@ app.post('/makeprofile', validateUserSignUp, async (req, res) => {
     // Alle onderdelen van het formulier worden opgehaald door middel van de BodyParser van express en samengevoegd in een variabele
     let profile = {
         url: req.body.avatar,
-        //TODO: email? req.body.mail is already usable,
-        //TODO: password?
         name: req.body.name,
         age: req.body.age,
         country: req.body.country,
         bio: req.body.bio,
         interests: arrayify(req.body.interests),
+        email: req.body.mail,
+        password: req.body.password,
         url_a: req.body.avatar_a,
         name_a: req.body.name_a,
         age_a: req.body.age_a,
@@ -195,13 +204,17 @@ app.post('/makeprofile', validateUserSignUp, async (req, res) => {
     const dbProfile = await db.collection('myprofile').findOne({
         email: req.body.mail // find the user with the same email as the one that just registered
     }, (err, user) => {
-        // is there a profile found? how to check this? (hint: check the mongodb docs)
-        // what if there is no profile found?
-        // how to check if this matches the person that just registered? password?
+        if (!req.body.mail) {
+            res.redirect('login');
+        } else {
+            // is there a profile found? how to check this? (hint: check the mongodb docs)
+            // what if there is no profile found?
+            // how to check if this matches the person that just registered? password?
 
-        let dbProfileData = dbProfile; // TODO: what data should be passed on to the profile page template?
-        // if everything's alright, then redirect to the profile page and send the user data with it
-        res.redirect('/profile', dbProfileData); // also an option: send only the email and the password, and fetch the user data from the database again (this will be a lot of work for the server and db though..)
+            let dbProfileData = dbProfile; // TODO: what data should be passed on to the profile page template?
+            // if everything's alright, then redirect to the profile page and send the user data with it
+            res.redirect('/profile', dbProfileData); // also an option: send only the email and the password, and fetch the user data from the database again (this will be a lot of work for the server and db though..)
+        }
     });
     // OlD STUFF
     // const title = "Succesfully Made Profile Page!";
@@ -209,14 +222,27 @@ app.post('/makeprofile', validateUserSignUp, async (req, res) => {
 
 })
 
+let dbProfileData = "";
+
 // De route voor de profielpagina
-app.get('/profile', async (req, res) => {
-    // console.log(dbProfileData) // TODO: check if this is the data you want
-    // if (!dbProfileData) { // what if the user doesn't come on this page after the POST from makeprofile? thus, dbProfileData isn't passed?
+app.get('/profile', dbProfileData, async (req, res) => {
+    // TODO: check if this is the data you want
+    if (dbProfileData == "") { // what if the user doesn't come on this page after the POST from makeprofile? thus, dbProfileData isn't passed?
+        console.log("Er is geen dbProfileData: " + dbProfileData);
+        res.redirect('makeprofile');
+    } else { // if there is profile data from the current user available, then what do we want? what should we do?
+        console.log(dbProfileData)
+        const profiles = await db.collection('myprofile').findOne({
+            email: dbProfileData.email
+        }); // then you can show the profile of the logged in user, and how do we look up the current user's data from the database?
 
-    // } else { // if there is profile data from the current user available, then what do we want? what should we do?
+        const title = "Profile Page";
 
-    // }
+        res.render('profile', {
+            title,
+            profiles
+        });
+    }
 
 
 
@@ -225,14 +251,14 @@ app.get('/profile', async (req, res) => {
     // Het eerder ingevulde profiel wordt nu uit de database gehaald zodat deze kan worden laten zien aan de gebruiker
 
     // and if someone _is_ logged in, then what?
-    const profiles = await db.collection('myprofile').findOne(); // then you can show the profile of the logged in user, and how do we look up the current user's data from the database?
+    // const profiles = await db.collection('myprofile').findOne(); // then you can show the profile of the logged in user, and how do we look up the current user's data from the database?
 
-    const title = "Profile Page";
+    // const title = "Profile Page";
 
-    res.render('profile', {
-        title,
-        profiles
-    });
+    // res.render('profile', {
+    //     title,
+    //     profiles
+    // });
 
 })
 
