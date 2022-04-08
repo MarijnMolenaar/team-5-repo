@@ -19,7 +19,7 @@ const{
     checkNotAuthenticated
 } = require("./middleware/auth")
 
-const initializePassport = require("/passport-config")
+const initializePassport = require("passport-config")
 initializePassport(
     passport, 
     async(email) => {
@@ -79,7 +79,7 @@ app.use(session({
 
 );
 app.use (passport.initialize())
-app.use(passpor.session())
+app.use(passport.session())
 app.use(methodOverride("method"))
 app.use(express.static('public'));
 

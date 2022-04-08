@@ -15,6 +15,6 @@ function checkAuthenticated(req, res, next) {
 }
 
 module.exports = {
-    checkNotAunthenticated,
+    checkNotAuthenticated,
     checkAuthenticated,
 }
