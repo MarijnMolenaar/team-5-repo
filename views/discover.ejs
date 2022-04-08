@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('includes/head'); -%>
+</head>
+
+<body>
+    <header>
+	<a href="/home"><img src="images/logowhite.png" alt=""></a>
+    <a id="filter" href="/filter"><img src="images/icon_filter2.png" alt=""></a>    
+    </header>
+
+    <%- include('includes/nav'); -%>
+
+    <main class="profile">
+        <h1>Find your match</h1>
+        <section class="match">
+            <section class="profile-nav">
+                <a href="#" class="humanbutton"><img src="/images/icon_human.png" alt=""></a>
+                <a href="#" class="animalbutton"><img src="/images/icon_animal.png" alt=""></a>
+            </section>
+            <section class="profile-human">
+                <img src="images/previewpic3.jpg" alt="">
+
+                <h2><%= matches.name %></h2>
+                <h3><%= matches.age %> years old</h3>
+                <p><%= matches.country %></p>
+                <p><%= matches.bio %></p>
+                <ul>
+                    <% matches.interests.forEach(function(item){ %>
+                        <li><%= item %></li>
+                        <% }) %>
+                </ul>
+            </section>
+            <section class="profile-animal">
+                <img src="images/previewpic3.jpg" alt="">
+
+                <h2><%= matches.name_a %></h2>
+                <h3><%= matches.age_a %> years old</h3>
+                <p><%= matches.type_a %></p>  
+                <p><%= matches.breed_a %></p>  
+                <p><%= matches.bio_a %></p>        
+            </section>
+            <form action="/discover" method="post">
+                <input class="matchid" type="text" name="matchid" value="<%= matches._id %>">
+                <button type="submit" formaction="/dislike"></button>
+                <button type="submit" formaction="/like"></button>
+            </form>
+        </section>
+    </main>
+
+    <script src="js/discoverscript.js"></script>
+</body>
+
+</html>

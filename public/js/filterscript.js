@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementById("country_filter");fetch("https://restcountries.com/v2/all").then((e=>e.json())).then((t=>{let n="";t.forEach((e=>{n+=`<option>${e.name}</option>`})),e.innerHTML=n})).catch((e=>{console.log(e)}))})),document.getElementById("discoverpage").classList.add("active");

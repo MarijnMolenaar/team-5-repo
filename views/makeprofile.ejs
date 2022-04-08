@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('includes/head'); -%>
+</head>
+
+<body>
+    <header>
+        <a href="/"><img src="images/logowhite.png" alt=""></a>
+    </header>
+
+    <main>
+        <h1>Make Profile</h1>
+
+        <section id="profilenave">
+            <a id="hprofe" href="#" onclick="HumanProfileEdit();"><img src="images/icon_human.png" alt=""></a>
+            <a id="aprofe" href="#" onclick="AnimalProfileEdit();"><img src="images/icon_animal.png" alt=""></a>
+        </section>
+
+        <section class="errorhandling">
+            <% if (errors){ %>
+            <% errors.forEach(error =>{ %>
+            <p> <%= error.msg %> </p>
+            <% }) %>
+            <% } %>
+        </section>
+
+        <form action="/makeprofile" method="post">
+            <section id="humanprofileedit">
+
+                <h2>Your profile</h2>
+
+                <label for="avatar">Choose a profile picture</label>
+                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name">
+
+                <label for="confirmName">Confirm name</label>
+                <input type="text" id="confirmName" name="confirmName">
+
+                <label for="age">Date of Birth</label>
+                <input type="date" id="age" name="age">
+
+                <label for="country">Country</label>
+                <select name="country" id="country"></select>
+
+                <label for="bio">Profile Biography</label>
+                <textarea name="bio" id="bio" cols="30" rows="5"></textarea>
+
+                <div id="int-list">
+                    <fieldset>
+                        <legend>Interests:</legend>
+                        <% interests.forEach(function(interest){ %>
+                        <input type="checkbox" name="interests" value="<%= interest %>" id="<%= interest %>">
+                        <label for="<%= interest %>"><%= interest %></label><br>
+                        <% }) %>
+                    </fieldset>
+                </div>
+
+                <label for="mail">E-mailaddress</label>
+                <input type="email" id="mail" name="mail">
+
+                <label for="ConfirmEmail">Confirm E-mailaddress</label>
+                <input type="email" id="ConfirmEmail" name="ConfirmEmail">
+
+                <label for="Password"> Create password</label>
+                <input type="password" id="password" name="password"> 
+
+                <label for="ConfirmPassword"> Confirm password</label>
+                <input type="password" id="ConfirmPassword" name="ConfirmPassword"> 
+            </section>
+
+            <section id="animalprofileedit">
+                <h2>Profile animal</h2>
+
+                <label for="avatar_a">Choose a profile picture</label>
+                <input type="file" id="avatar_a" name="avatar_a" accept="image/png, image/jpeg">
+
+                <label for="name_a">Name</label>
+                <input type="text" id="name_a" name="name_a">
+
+                <label for="confirmName_a">Name</label>
+                <input type="text" id="confirmName_a" name="confirmName_a">
+
+                <label for="age_a">Date of Birth</label>
+                <input type="date" id="age_a" name="age_a">
+
+                <label for="type_a">Animal Type</label>
+                <select name="type_a" id="type_a">
+                    <option value="Dog">Dog</option>
+                    <option value="Cat">Cat</option>
+                    <option value="Guinea Pig">Guinea Pig</option>
+                    <option value="Fish">Fish</option>
+                    <option value="Bunny">Bunny</option>
+                    <option value="Bird">Bird</option>
+                    <option value="Hamster">Hamster</option>
+                    <option value="Hedgehog">Hedgehog</option>
+                </select>
+
+                <label for="breed_a">Breed</label>
+                <input type="text" id="breed_a" name="breed_a">
+
+                <label for="bio_a">Animal Biography</label>
+                <textarea name="bio_a" id="bio_a" cols="30" rows="5"></textarea>
+            </section>
+
+            <input type="submit" value="Opslaan">
+        </form>
+    </main>
+
+    <script src="js/makescript.js"></script>
+</body>
+
+</html>

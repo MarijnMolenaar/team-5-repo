@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('includes/head'); -%>
+</head>
+
+<body>
+    <%- include('includes/header'); -%>
+
+    <%- include('includes/nav'); -%>
+
+    <main class="profile">
+        <section class="profile-nav">
+            <a href="#" class="humanbutton"><img src="/images/icon_human.png" alt=""></a>
+            <a href="#" class="animalbutton"><img src="/images/icon_animal.png" alt=""></a>
+        </section>
+        <section class="profile-human">
+            <img src="/images/profielfotos/<%=profiles.url %>" alt="profielimg">
+
+            <h2><%= profiles.name %></h2>
+            <h3><%= profiles.age %> years old</h3>
+            <p id="selected"><%= profiles.country %></p>
+            <p><%= profiles.bio %></p>
+            <ul>
+                <% profiles.interests.forEach(function(item){ %>
+                    <li><%= item %></li>
+                    <% }) %>
+            </ul>
+        </section>
+        <section class="profile-animal">
+            <img src="/images/profielfotos/<%=profiles.url_a %>" alt="profielimganimal">
+
+            <h2><%= profiles.name_a %></h2>
+            <h3><%= profiles.age_a %> years old</h3>
+            <p><%= profiles.type_a %></p>  
+            <p><%= profiles.breed_a %></p>  
+            <p><%= profiles.bio_a %></p>        
+        </section>
+
+        <button type="button" onclick="location.href='/edit'">Edit Profile</button>
+    </main>
+
+    <script src="/js/profilescript.js"></script>
+</body>
+
+</html>

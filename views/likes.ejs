@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('includes/head'); -%>
+</head>
+
+<body>
+    <%- include('includes/header'); -%>
+
+    <%- include('includes/nav'); -%>
+
+    <main>
+        <h1>Liked Profiles</h1>
+
+        <% likes.forEach(function(likes){ %>
+        <section id="likes">
+            <img src="images/previewpic3.jpg" alt="">
+            <p><%= likes.name %> & <%= likes.name_a %></p>
+            <a href="/likes/<%= likes._id %>"><img id="arrow" src="images/icon_arrowright.png" alt=""></a>
+        </section>
+        <form id="idcheck">
+            <input type="text" id="likeid" name="likeid" value="<%= likes._id %>">
+        </form>
+        <% }) %>
+    </main>
+
+    <script src="js/likesscript.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,452 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
+
+/* Overall Page Styling */
+
+*,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #b9ceff;
+    font-family: 'Roboto', sans-serif;
+}
+
+main {
+    width: 75%;
+    margin: auto;
+    margin-top: 5em;
+}
+
+
+
+/* Header and Nav styling */
+
+header,
+nav {
+    position: sticky;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #253355;
+    padding: 1em 0;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.25);
+}
+
+header img {
+    height: 30px;
+}
+
+#filter {
+    position: absolute;
+    top: 1em;
+    right: 1.5em;
+}
+
+.back {
+    position: absolute;
+    top: 1em;
+    left: 1.5em;
+}
+
+.back img {
+    transform: rotate(180deg);
+}
+
+
+
+nav {
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 1em 0 calc(1em - 4px) 0;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul img {
+    max-height: 30px;
+    max-width: 30px;
+    padding: 0;
+    opacity: 0.5;
+}
+
+.active {
+    opacity: 1;
+}
+
+
+
+/* Landing Page Styling */
+
+#index {
+    background-color: #253355;
+}
+
+#index main {
+    width: 100%;
+    margin-top: 40%;
+}
+
+#index img {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+}
+
+#index button {
+    display: block;
+    margin: auto;
+    margin-top: 1.5em;
+    width: 60%;
+    padding: 1em 2em;
+    background-color: white;
+    color: #253355;
+    border: none;
+    border-radius: 40px;
+    font-weight: 700;
+    font-family: 'Roboto',
+        sans-serif;
+    font-size: 14px;
+}
+
+
+
+/* Homepage Styling */
+
+h1 {
+    font-weight: 900;
+    font-size: 30px;
+    margin-top: 0.75em;
+    color: #253355;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+#homep {
+    margin-top: 0.5em;
+    padding: 1em;
+    font-weight: 300;
+    background-color: white;
+    border-radius: 25px;
+}
+
+#homepic {
+    margin-top: 0.5em;
+    width: 100%;
+    height: 325px;
+    border-radius: 25px;
+    object-fit: cover;
+}
+
+
+
+/* Profile Page Styling */
+
+/* #profilenav,
+#profilenave {
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+#profilenav a,
+#profilenave a {
+    padding: 0 1em;
+}
+
+#profilenav img,
+#profilenave img {
+    max-height: 25px;
+}
+
+#humanprofile,
+#animalprofile {
+    margin: auto;
+    max-width: 292.5px;
+    background-color: white;
+    margin-top: 1em;
+    border-radius: 40px;
+    padding-bottom: 2em;
+}
+
+#previewpic,
+#previewpic_a {
+    display: block;
+    width: 292.5px;
+    height: 292.5px;
+    object-fit: cover;
+    margin: auto;
+    padding: 0 0 1em 0;
+    border-radius: 40px 40px 0px 0px ;
+}
+
+#humanprofile h2,
+#animalprofile h2 {
+    margin-left: 20px;
+    font-size: 30px;
+}
+
+#humanprofile h3,
+#animalprofile h3 {
+    margin-left: 20px;
+    margin-top: 0.25em;
+    font-style: italic;
+    font-weight: 300;
+}
+
+#animalprofile p,
+#humanprofile p {
+    margin: 0 20px;
+    margin-top: 0.5em;
+    padding-top: 0.75em;
+    font-weight: 300;
+}
+
+#animalprofile p:first-of-type {
+    margin: 0 20px;
+    margin-top: 1em;
+    padding-top: 0.75em;
+    font-weight: 700;
+    font-size: 20px;
+    border-top: 1px solid black;
+}
+
+#animalprofile p:nth-of-type(2) {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+#humanprofile p:first-of-type {
+    margin: 0 20px;
+    margin-top: 1em;
+    padding-top: 0.75em;
+    font-weight: 300;
+    border-top: 1px solid black;
+}
+
+#humanprofile ul {
+    margin: 0 20px;
+    margin-top: 1em;
+    list-style: none;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 0.5em;
+}
+
+#humanprofile li {
+    padding: 0.5em;
+    background-color: rgb(220, 220, 220);
+    font-size: 12px;
+    font-weight: 400;
+    border-radius: 20px;
+    text-align: center;
+}
+
+button {
+    display: block;
+    margin: auto;
+    margin-top: 1.5em;
+    width: 60%;
+    padding: 1em 2em;
+    background-color: #a50407;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    font-weight: 700;
+    font-family: 'Roboto',
+        sans-serif;
+    font-size: 14px;
+    margin-bottom: 6em;
+} */
+
+
+
+/* Matches Page Styling */
+#match {
+    background-color: white;
+    border-radius: 25px;
+    padding-top: 0.25em;
+    margin-bottom: 1em;
+}
+
+#matchid {
+    display: none;
+}
+
+#match #likeknop {
+    background-color: rgb(115, 163, 42);
+    margin: 1em auto;
+}
+
+#match #dislikeknop {
+    background-color: rgb(163, 42, 42);
+    margin: 1em auto;
+}
+
+#match #humanprofile,
+#match #animalprofile {
+    padding-bottom: 0;
+}
+
+
+/* Likes Page Styling */
+#likes {
+    margin: 0.5em 0;
+    background-color: white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#likes img {
+    display: block;
+    height: 75px;
+    width: 75px;
+    border-radius: 15px 0 0 15px;
+    object-fit: cover;
+}
+
+#likes p {
+    margin: 0;
+    font-size: 18px;
+    align-self: center;
+}
+
+#likes a {
+    height: 30px;
+    width: 30px;
+    align-self: center;
+    margin-right: 1em;
+}
+
+#likes #arrow {
+    height: 30px;
+    width: 30px;
+}
+
+#idcheck {
+    display: none;
+}
+
+#likedprofile #match {
+    padding-bottom: 1em;
+    margin-top: 2em;
+}
+
+
+
+/* Make Profile & Edit Page Styling */
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.75em;
+    margin-bottom: 6em;
+}
+
+label,
+form p,
+p {
+    margin-bottom: 0.5em;
+    font-weight: 700;
+}
+
+input[type=text] {
+    width: 100%;
+    background-color: white;
+    border: none;
+    border-radius: 40px;
+    margin-bottom: 1em;
+    padding: 0.75em 1em;
+    font-family: 'Roboto', sans-serif;
+}
+
+textarea {
+    width: 100%;
+    background-color: white;
+    border: none;
+    border-radius: 25px;
+    margin-bottom: 1em;
+    padding: 0.5em 1em;
+    font-family: 'Roboto',
+        sans-serif;
+}
+
+#int-list {
+    height: 100px;
+    overflow: auto;
+    margin-bottom: 1em;
+}
+
+fieldset {
+    padding: 0.5em 1em;
+    background-color: white;
+    border: none;
+    border-radius: 25px;
+}
+
+legend {
+    float: left;
+    width: 100%;
+    margin-bottom: 0.5em;
+    font-weight: 700;
+}
+
+input[type=checkbox] {
+    margin-right: 0.5em;
+}
+
+fieldset label {
+    font-weight: 400;
+}
+
+input[type=submit] {
+    margin: auto;
+    margin-top: 1em;
+    width: 60%;
+    padding: 1em 2em;
+    background-color: #a50407;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+
+#previewphoto {
+    margin-top: 0.5em;
+}
+
+select {
+    width: 100%;
+    margin-bottom: 1em;
+    border: none;
+    border-radius: 25px;
+    padding: 0.75em 1em;
+}
+
+#errorhandling{
+    margin: 20px 0px;
+    color: darkred;
+    font-size: 1.2em;
+}
+
