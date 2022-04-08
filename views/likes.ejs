@@ -2,30 +2,34 @@
 <html lang="en">
 
 <head>
-    <%- include('includes/head'); -%>
+    <link rel="stylesheet" href="/css/likes.css">
 </head>
 
 <body>
+
     <%- include('includes/header'); -%>
 
     <%- include('includes/nav'); -%>
 
     <main>
-        <h1>Liked Profiles</h1>
+        <h1>Favorites </h1>
 
         <% likes.forEach(function(likes){ %>
-        <section id="likes">
-            <img src="images/previewpic3.jpg" alt="">
-            <p><%= likes.name %> & <%= likes.name_a %></p>
-            <a href="/likes/<%= likes._id %>"><img id="arrow" src="images/icon_arrowright.png" alt=""></a>
-        </section>
-        <form id="idcheck">
-            <input type="text" id="likeid" name="likeid" value="<%= likes._id %>">
-        </form>
-        <% }) %>
-    </main>
+        <section>
+            <article>
+            <h2><%= likes.name %> & <%= likes.name_a %></h2>
+            <p>Hi my name is whitney Abrah</p>
+            <button>Liked</button>
+            </article>
 
-    <script src="js/likesscript.js"></script>
+            </article>
+            <img src="images/match1.jpg" alt="">
+            <img src="images/icon_arrowright.png" alt="">
+            <article>
+        </section>
+        <% }) %>
+
+    </main>
 </body>
 
 </html>

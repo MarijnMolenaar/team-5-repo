@@ -17,7 +17,7 @@ body {
 main {
     width: 75%;
     margin: auto;
-    margin-top: 5em;
+    margin-top: 76px;
 }
 
 
@@ -49,13 +49,13 @@ header img {
     right: 1.5em;
 }
 
-.back {
+#back {
     position: absolute;
     top: 1em;
     left: 1.5em;
 }
 
-.back img {
+#back img {
     transform: rotate(180deg);
 }
 
@@ -159,7 +159,7 @@ h1 {
 
 /* Profile Page Styling */
 
-/* #profilenav,
+#profilenav,
 #profilenave {
     display: flex;
     justify-content: center;
@@ -274,7 +274,7 @@ button {
         sans-serif;
     font-size: 14px;
     margin-bottom: 6em;
-} */
+}
 
 
 

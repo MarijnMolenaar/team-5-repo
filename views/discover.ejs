@@ -13,39 +13,39 @@
 
     <%- include('includes/nav'); -%>
 
-    <main class="profile">
+    <main>
         <h1>Find your match</h1>
-        <section class="match">
-            <section class="profile-nav">
-                <a href="#" class="humanbutton"><img src="/images/icon_human.png" alt=""></a>
-                <a href="#" class="animalbutton"><img src="/images/icon_animal.png" alt=""></a>
-            </section>
-            <section class="profile-human">
-                <img src="images/previewpic3.jpg" alt="">
+        <section id="match">
+            <div id="profilenav">
+                <a id="hprof" href="#" onclick="HumanProfile();"><img src="images/icon_human.png" alt=""></a>
+                <a id="aprof" href="#" onclick="AnimalProfile();"><img src="images/icon_animal.png" alt=""></a>
+            </div>
+            <div id="humanprofile">
+                <img id="previewpic" src="images/previewpic3.jpg" alt="">
 
-                <h2><%= matches.name %></h2>
+                <h2 id="h2check"><%= matches.name %></h2>
                 <h3><%= matches.age %> years old</h3>
-                <p><%= matches.country %></p>
+                <p id="selected"><%= matches.country %></p>
                 <p><%= matches.bio %></p>
-                <ul>
+                <ul id="interestlist">
                     <% matches.interests.forEach(function(item){ %>
                         <li><%= item %></li>
                         <% }) %>
                 </ul>
-            </section>
-            <section class="profile-animal">
-                <img src="images/previewpic3.jpg" alt="">
+            </div>
+            <div id="animalprofile">
+                <img id="previewpic_a" src="images/previewpic3.jpg" alt="">
 
                 <h2><%= matches.name_a %></h2>
                 <h3><%= matches.age_a %> years old</h3>
                 <p><%= matches.type_a %></p>  
                 <p><%= matches.breed_a %></p>  
                 <p><%= matches.bio_a %></p>        
-            </section>
+            </div>
             <form action="/discover" method="post">
-                <input class="matchid" type="text" name="matchid" value="<%= matches._id %>">
-                <button type="submit" formaction="/dislike"></button>
-                <button type="submit" formaction="/like"></button>
+                <input type="text" id="matchid" name="matchid" value="<%= matches._id %>">
+                <button type="submit" id="dislikeknop" formaction="/dislike">Dislike</button>
+                <button type="submit" id="likeknop" formaction="/like">Like</button>
             </form>
         </section>
     </main>

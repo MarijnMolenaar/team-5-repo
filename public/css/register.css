@@ -1,0 +1,101 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "harmattan", sans-serif;
+}
+body{
+    background-color:#b9ceff ;
+    color:white;
+
+}
+
+
+h1 {
+     position: relative;
+    text-align: center;
+    top:4em;
+    color:#253355;
+    font-size: 3rem;
+}
+
+/* for the logo*/
+header img {
+    position: relative;
+    width:20%;
+    left:8em;
+    background-color:#253355;
+    padding :1em;
+    border-radius: 1em; 
+}
+
+main {
+    margin-top: 10em ;
+    padding: 2em;
+
+}
+
+/** Het inlogformulier */
+
+form {
+    display: flex;
+    position: relative;
+    left:2.2em;
+    margin:auto;
+    gap: 1em;
+    flex-direction: column;
+
+}
+
+ form label{ 
+     font-size: 1rem;
+     color:#253355;
+     font-weight: 900;
+
+}
+form input {
+    padding: 0.8em;
+    height: 2.5em;
+    width: 20em;
+    border-radius: 1em;
+    box-shadow: 2px 3px 4px ;
+    transform: scale(1.2);
+
+
+}
+/**Knop**/
+
+form button{
+    background-color:#253355 ;
+    color:white;
+    margin:auto;
+    margin-top: 1em;
+    width:7em;
+    font-weight: bold;
+    font-size:1rem;
+    padding: 1em;
+    border-radius: 1em;
+    margin-left: 4em;
+    border:none;
+}
+/* de active state van de knop*/
+button:active {
+    background-color: darkred;
+    color: white;
+}
+
+/*link voor de creat account*/
+ a{
+     position: absolute;
+     right: 7em;
+     font-size:1.2rem;
+    color:white;
+    justify-items: center;
+
+}
+
+a:active{
+    color:darkred
+
+}
