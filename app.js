@@ -155,13 +155,13 @@ app.post('/makeprofile', validateUserSignUp, async (req, res) => {
     // Alle onderdelen van het formulier worden opgehaald door middel van de BodyParser van express en samengevoegd in een variabele
     let profile = {
         url: req.body.avatar,
-        //TODO: email? req.body.mail is already usable,
-        //TODO: password?
         name: req.body.name,
         age: req.body.age,
         country: req.body.country,
         bio: req.body.bio,
         interests: arrayify(req.body.interests),
+        mail: req.body.mail,
+        password: req.body.password,
         url_a: req.body.avatar_a,
         name_a: req.body.name_a,
         age_a: req.body.age_a,
