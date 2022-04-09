@@ -90,7 +90,24 @@ select {
 }
 
 
+.profilenav {
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+}
 
+.profilenav a {
+    padding: 0 1em;
+}
+
+.profilenav a img {
+    max-height: 1.6em;
+    opacity: 0.5;
+}
+
+.activebutton {
+    opacity: 1 !important;
+}
 
 /* error handling  */
 
