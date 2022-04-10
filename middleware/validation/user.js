@@ -21,7 +21,6 @@ exports.validateUserSignUp = [
   
    
     check('mail').trim().not().isEmpty().withMessage('- Email is empty'),
-    //isemail... hoe weet ik dat het werkt 
 
     check('ConfirmEmail').trim().not().isEmpty().custom((value, {req}) => {
         if(value !== req.body.mail){
@@ -40,6 +39,17 @@ exports.validateUserSignUp = [
         return true;
     }),
  
- //en waarom krijg ik altijd de melding invalid value als error erbij als ik niks invul, en hoe krijg ik dit weg?.. kan dat 
+    check('name_a').trim().not().isEmpty().withMessage('- You must fill in the name of your animale'). isLength({min: 3, max: 20}), 
+    
 
+    check('confirmName_a').trim().not().isEmpty().custom((value, {req}) => {
+        if(value !== req.body.name){
+            throw new Error('- The name of you animal is not the same!')
+         }
+         return true;
+     }),
+
+     check('age_a').trim().not().isEmpty().withMessage('- Fill in you date of birth'),
+  
 ]
+
