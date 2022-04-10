@@ -34,7 +34,7 @@ exports.validateUserSignUp = [
 
     check('ConfirmPassword').trim().not().isEmpty().custom((value, {req}) => {
         if(value !== req.body.password){
-            throw new Error('- name is not the same!')
+            throw new Error('- password is not the same!')
         }
         return true;
     }),

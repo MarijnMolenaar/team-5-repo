@@ -14,8 +14,8 @@
         <h1>Make Profile</h1>
 
         <section id="profilenav">
-            <a id="hprofe" href="#" onclick="HumanProfileEdit();"><img src="images/icon_human.png" alt=""></a>
-            <a id="aprofe" href="#" onclick="AnimalProfileEdit();"><img src="images/icon_animal.png" alt=""></a>
+            <a class="hprofe" href="#" ><img src="images/icon_human.png" alt=""></a>
+            <a class="aprofe" href="#" ><img src="images/icon_animal.png" alt=""></a>
         </section>
 
         <section class="errorhandling">
@@ -27,7 +27,7 @@
         </section>
 
         <form action="/makeprofile" method="post">
-            <section id="humanprofileedit">
+            <section class="HumanProfile">
 
                 <h2>Your profile</h2>
 
@@ -72,7 +72,7 @@
                 <input type="password" id="ConfirmPassword" name="ConfirmPassword"> 
             </section>
 
-            <section id="animalprofileedit">
+            <section class="AnimalProfile">
                 <h2>Profile animal</h2>
 
                 <label for="avatar_a">Choose a profile picture</label>

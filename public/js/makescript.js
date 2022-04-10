@@ -1,35 +1,35 @@
-const divhumanedit = document.getElementById("humanprofileedit");
-const divanimaledit = document.getElementById("animalprofileedit");
+const human = document.querySelector(".HumanProfile");
+const animal = document.querySelector(".AnimalProfile");
 
 // De functie van het menselijke profiel wordt uitgevoerd bij het opstarten van de pagina, aangezien deze laten zien moet worden
-HumanProfileEdit();
+HumanProfile();
 
 // Binnen deze functie wordt het menselijke profiel weergegeven en wordt het dieren profiel verborgen door de display-style naar none te veranderen
-document.getElementById("hprofe").addEventListener("click", (e) => {
+document.querySelector(".hprofe").addEventListener("click", (e) => {
     HumanProfile();
     e.preventDefault();
 }, false);
 
 // Bij het klikken van de 'human' knop wordt de bijbehorende functie uitgevoerd
-document.getElementById("aprofe").addEventListener("click", (e) => {
+document.querySelector(".aprofe").addEventListener("click", (e) => {
     AnimalProfile();
     e.preventDefault();
 }, false);
 
 // Binnen deze functie wordt het menselijke profiel weergegeven en wordt het dieren profiel verborgen door de display-style naar none te veranderen
 function HumanProfile() {
-    divhumanedit.style.display = "block";
-    divanimaledit.style.display = "none";
-    document.getElementById("hprofe > img").classList.add("activebutton");
-    document.getElementById("aprofe > img").classList.remove("activebutton");
+    human.style.display = "block";
+    animal.style.display = "none";
+    document.querySelector(".hprofe > img").classList.add("activebutton");
+    document.querySelector(".aprofe > img").classList.remove("activebutton");
 }
 
 // Hier gebeurt dit ook, maar dan vice versa
 function AnimalProfile() {
-    divhumanedit.style.display = "none";
-    divanimaledit.style.display = "block";
-    document.getElementById("hprofe > img").classList.add("activebutton");
-    document.getElementById("aprofe > img").classList.remove("activebutton");
+    human.style.display = "none";
+    animal.style.display = "block";
+    document.querySelector(".hprofe > img").classList.add("activebutton");
+    document.querySelector(".aprofe > img").classList.remove("activebutton");
 
 }
 
@@ -38,7 +38,7 @@ const loadFile = function(event) {
 	const image = document.getElementById('previewphoto');
 	image.src = URL.createObjectURL(event.target.files[0]);
 };
-// Bron gebruikt: https://www.webtrickshome.com/forum/how-to-display-uploaded-image-in-html-using-javascript
+
 
 
 // De 'REST Countries' API wordt ingeladen in het document
