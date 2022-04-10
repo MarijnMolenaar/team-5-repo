@@ -20,7 +20,7 @@ exports.validateUserSignUp = [
     check('age').trim().not().isEmpty().withMessage('- Fill in you date of birth'),
   
    
-    check('mail').trim().not().isEmpty().withMessage('- Email is empty').isEmail().withMessage("- Email must be a valid email address."),
+    check('mail').trim().not().isEmpty().withMessage('- Email is empty'),
     //isemail... hoe weet ik dat het werkt 
 
     check('ConfirmEmail').trim().not().isEmpty().custom((value, {req}) => {
@@ -35,7 +35,7 @@ exports.validateUserSignUp = [
 
     check('ConfirmPassword').trim().not().isEmpty().custom((value, {req}) => {
         if(value !== req.body.password){
-            throw new Error('- name is not the same!')
+            throw new Error('- password is not the same!')
         }
         return true;
     }),
