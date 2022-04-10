@@ -5,13 +5,13 @@ const divanimaledit = document.getElementById("animalprofileedit");
 HumanProfileEdit();
 
 // Binnen deze functie wordt het menselijke profiel weergegeven en wordt het dieren profiel verborgen door de display-style naar none te veranderen
-document.querySelector(".hprofe").addEventListener("click", (e) => {
+document.getElementById("hprofe").addEventListener("click", (e) => {
     HumanProfile();
     e.preventDefault();
 }, false);
 
 // Bij het klikken van de 'human' knop wordt de bijbehorende functie uitgevoerd
-document.querySelector(".aprofe").addEventListener("click", (e) => {
+document.getElementById("aprofe").addEventListener("click", (e) => {
     AnimalProfile();
     e.preventDefault();
 }, false);
@@ -20,16 +20,17 @@ document.querySelector(".aprofe").addEventListener("click", (e) => {
 function HumanProfile() {
     divhumanedit.style.display = "block";
     divanimaledit.style.display = "none";
-    document.querySelector(".humanbutton > img").classList.add("activebutton");
-    document.querySelector(".animalbutton > img").classList.remove("activebutton");
+    document.getElementById("hprofe > img").classList.add("activebutton");
+    document.getElementById("aprofe > img").classList.remove("activebutton");
 }
 
 // Hier gebeurt dit ook, maar dan vice versa
 function AnimalProfile() {
     divhumanedit.style.display = "none";
     divanimaledit.style.display = "block";
-    document.querySelector(".animalbutton > img").classList.add("activebutton");
-    document.querySelector(".humanbutton > img").classList.remove("activebutton");
+    document.getElementById("hprofe > img").classList.add("activebutton");
+    document.getElementById("aprofe > img").classList.remove("activebutton");
+
 }
 
 // Bij het uploaden van een foto wordt deze functie uitgevoerd, waarmee de geüploade foto gelijk eronder weergegeven wordt
