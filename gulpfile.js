@@ -12,6 +12,28 @@ gulp.task('test', function() {
 // JS minifier
 
 //command voor minifien: gulp useref
+const {src, dest, watch}=require('gulp');
+const minifyJs = require('gulp-uglify');
+const sourceMaps = require('gulp-sourcemaps');
+const concat = require('gulp-concat');
+
+const bundleJs = () => {
+  return src('public/js/*.js')
+  .pipe(sourceMaps.init())
+  .pipe(minifyJs())
+  .pipe(concat('bundle.js'))
+  .pipe(sourceMaps.write())
+  .pipe(dest('public/js/'))
+}
+
+const devWatch = () => {
+  watch('public/js/', bundleJs)
+}
+
+exports.bundleJs = bundleJs;
+exports.devWatch = devWatch;
+
+
 gulp.task('useref', function(){
   return gulp.src('public/views/*.html')
     .pipe(useref())

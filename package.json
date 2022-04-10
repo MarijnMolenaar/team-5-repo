@@ -39,6 +39,8 @@
     "browser-sync": "^2.27.9",
     "cssnano": "^5.1.7",
     "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
     "gulp-uglify-es": "^3.0.0",
     "gulp-useref": "^5.0.0",
