@@ -155,6 +155,22 @@ h1 {
     object-fit: cover;
 }
 
+#homemessage {
+    display: block;
+    margin: auto;
+    margin-top: 1.5em;
+    width: 60%;
+    padding: 1em 2em;
+    background-color: #a50407;
+    color: white;
+    border: none;
+    border-radius: 2.5em;
+    font-weight: 700;
+    font-family: 'Roboto',
+        sans-serif;
+    font-size: 0.875em;
+    margin-bottom: 6em;
+}
 
 
 /* Profile Page Styling */
