@@ -109,6 +109,14 @@ app.get('/', (req, res) => {
     });
 })
 
+
+app.get('/login',  (req, res) => {
+      const title = "'log in "
+      res.render("login", {
+        title
+      });
+})
+
 // De route voor de homepagina
 app.get('/home', (req, res) => {
     // if (!req.session.user) {
@@ -125,6 +133,7 @@ app.get('/home', (req, res) => {
     })
 
 })
+
 
 // De pagina voor het aanmaken van het profiel
 app.get('/makeprofile', (req, res) => {
