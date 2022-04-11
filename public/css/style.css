@@ -17,7 +17,7 @@ body {
 main {
     width: 75%;
     margin: auto;
-    margin-top: 5em;
+    margin-top: 76px;
 }
 
 
@@ -49,13 +49,13 @@ header img {
     right: 1.5em;
 }
 
-.back {
+#back {
     position: absolute;
     top: 1em;
     left: 1.5em;
 }
 
-.back img {
+#back img {
     transform: rotate(180deg);
 }
 
@@ -155,31 +155,16 @@ h1 {
     object-fit: cover;
 }
 
-#homemessage {
-    display: block;
-    margin: auto;
-    margin-top: 1.5em;
-    width: 60%;
-    padding: 1em 2em;
-    background-color: #a50407;
-    color: white;
-    border: none;
-    border-radius: 2.5em;
-    font-weight: 700;
-    font-family: 'Roboto',
-        sans-serif;
-    font-size: 0.875em;
-    margin-bottom: 6em;
-}
 
 
 /* Profile Page Styling */
 
-/* #profilenav,
+#profilenav,
 #profilenave {
     display: flex;
     justify-content: center;
     margin-top: 1em;
+    
 }
 
 #profilenav a,
@@ -290,7 +275,7 @@ button {
         sans-serif;
     font-size: 14px;
     margin-bottom: 6em;
-} */
+}
 
 
 
