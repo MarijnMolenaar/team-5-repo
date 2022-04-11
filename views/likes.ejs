@@ -15,7 +15,7 @@
 
         <% likes.forEach(function(likes){ %>
         <section id="likes">
-            <img src="images/previewpic3.jpg" alt="">
+            <img src="/images/profielfotos/<%= likes.url %>" alt="">
             <p><%= likes.name %> & <%= likes.name_a %></p>
             <a href="/likes/<%= likes._id %>"><img id="arrow" src="images/icon_arrowright.png" alt=""></a>
         </section>
