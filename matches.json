@@ -1,6 +1,7 @@
 [
         {
             "name": "Petra",
+            "url" :"1.jpeg",
             "age": "24",
             "country": "Netherlands",
             "bio": "Spontaneous and adventurous girl looking for a match!",
@@ -14,6 +15,7 @@
         },
         {
             "name": "Marije",
+            "url" :"3.jpeg",
             "age": "29",
             "country": "Netherlands",
             "bio": "Spontaneous and adventurous girl looking for a match!",
@@ -27,6 +29,7 @@
         },
         {
             "name": "Lisa",
+            "url" :"Rosa.jpeg",
             "age": "22",
             "country": "Netherlands",
             "bio": "Spontaneous and adventurous girl looking for a match!",
@@ -40,6 +43,7 @@
         },
         {
             "name": "Robert",
+            "url" :"2.jpeg",
             "age": "25",
             "country": "Netherlands",
             "bio": "Spontaneous and adventurous girl looking for a match!",
@@ -54,6 +58,7 @@
         {
             "name": "Sonya",
             "age": "25",
+            "url" :"rosalie.jpeg",
             "country": "Netherlands",
             "bio": "Spontaneous and adventurous girl looking for a match!",
             "interests": ["Travel", "Dogs", "Cooking", "Politics", "Fitness"],
@@ -67,6 +72,7 @@
         {
             "name": "Whitney",
             "age": "25",
+            "url" :"sophie.jpeg",
             "country": "Netherlands",
             "bio": "Spontaneous and adventurous girl looking for a match!",
             "interests": ["Travel", "Dogs", "Cooking", "Politics", "Fitness"],
@@ -79,6 +85,7 @@
         },
         {
             "name": "Marijn",
+            "url" :"kevin.jpeg",
             "age": "25",
             "country": "Netherlands",
             "bio": "Spontaneous and adventurous girl looking for a match!",
@@ -92,6 +99,7 @@
         },
         {
             "name": "Joost",
+            "url" :"tijn.jpeg",
             "age": "25",
             "country": "Netherlands",
             "bio": "Spontaneous and adventurous girl looking for a match!",
@@ -103,7 +111,8 @@
             "bio_a": "Always up to play with new people!",
             "liked": ""
         },{
-            "name": "Tessa",
+            "name": "Danny",
+            "url" :"frederiek.jpeg",
             "age": "25",
             "country": "Netherlands",
             "bio": "Spontaneous and adventurous girl looking for a match!",
